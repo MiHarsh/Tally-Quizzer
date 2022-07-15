@@ -1,0 +1,26 @@
+{
+  "name": "tally-quizzer",
+  "version": "1.0.0",
+  "description": "a quizzer app ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-install": "npm install -g nodemon concurrently",
+    "backend-node": "cd backend && cd node && nodemon index.js",
+    "frontend": "cd frontend && npm start ",
+    "start": "concurrently \"npm run backend-node\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiHarsh/Tally-Quizzer.git"
+  },
+  "author": "MiHarsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiHarsh/Tally-Quizzer/issues"
+  },
+  "homepage": "https://github.com/MiHarsh/Tally-Quizzer#readme",
+  "dependencies": {
+    "firebase": "^9.9.0"
+  }
+}
