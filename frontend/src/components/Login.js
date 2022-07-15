@@ -2,36 +2,30 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import firebase, { googleProvider, auth } from "../firebase";
+import firebase, { googleProvider, auth, database } from "../firebase";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  function signInWithGoogle() {
-    firebase
-      .auth()
-      .signInWithPopup(googleProvider)
-      .then((re) => {
-        console.log(re);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError("Failed to log in");
-      });
-  }
+  async function handleClick(e) {
+    e.preventDefault();
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
+    try {
       setError("");
+      setLoading(true);
+      await signInWithGoogle();
       history.push("/dashboard");
-      console.log(user);
+    } catch {
+      setError("Failed to log in");
     }
-  });
+
+    setLoading(false);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -89,7 +83,7 @@ export default function Login() {
             }}
           >
             OR
-            <Button onClick={signInWithGoogle}> Sign In With Google </Button>
+            <Button onClick={handleClick}> Sign In With Google </Button>
           </div>
         </div>
       </Container>

@@ -1,9 +1,11 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/storage";
+import "firebase/database";
 
 const app = firebase.initializeApp({
   apiKey: "AIzaSyC0qLIcHt1aDuuv4775zMAzWK8yrAF4ihE",
+  databaseURL: "https://tally-quizzer-default-rtdb.firebaseio.com/",
   authDomain: "tally-quizzer.firebaseapp.com",
   projectId: "tally-quizzer",
   storageBucket: "tally-quizzer.appspot.com",
@@ -14,6 +16,7 @@ const app = firebase.initializeApp({
 
 const auth = app.auth();
 const storage = app.storage();
+const database = app.database();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-export { storage, auth, googleProvider, app as default };
+export { storage, database, auth, googleProvider, app as default };

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pre-install": "npm install -g nodemon concurrently",
-    "backend-node": "cd backend && cd node && nodemon index.js",
+    "backend-node": "cd backend && nodemon index.js",
     "frontend": "cd frontend && npm start ",
     "start": "concurrently \"npm run backend-node\" \"npm run frontend\""
   },
