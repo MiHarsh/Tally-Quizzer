@@ -32,7 +32,6 @@ export default function Dashboard() {
       setFiles(urls);
       console.log(urls);
     };
-    loadImages();
 
     const getImages = async () => {
       let result = await storage.ref().child("images/students").listAll();
@@ -48,7 +47,6 @@ export default function Dashboard() {
       setStud(urls);
       console.log(urls);
     };
-    loadstud();
 
     const getVideos = async () => {
       let result = await storage.ref().child("images/videos").listAll();
@@ -64,51 +62,15 @@ export default function Dashboard() {
       setVid(urls);
       console.log(urls);
     };
-    loadVideos();
   }, []);
 
   const [error, setError] = useState("");
   const history = useHistory();
 
   const [file, setFile] = useState(null);
-  const [url, setURL] = useState("");
-  const [studFile, setStudFile] = useState(null);
-  const [studUrl, setStudUrl] = useState("");
-  const [video, setVideo] = useState(null);
-  const [videoURl, setVideoUrl] = useState("");
 
   function handleChange(e) {
     if (e.target.files[0]) setFile(e.target.files[0]);
-  }
-
-  async function handleUpload(e) {
-    e.preventDefault();
-    const path = `/images/${file.name}`;
-    const ref = storage.ref(path);
-    await ref.put(file);
-    const url = await ref.getDownloadURL();
-    setURL(url);
-    setFile(null);
-  }
-
-  async function handleStudUpload(e) {
-    e.preventDefault();
-    const path = `/images/students/${file.name}`;
-    const ref = storage.ref(path);
-    await ref.put(file);
-    const url = await ref.getDownloadURL();
-    setStudUrl(url);
-    setStudFile(null);
-  }
-
-  async function handleVidUpload(e) {
-    e.preventDefault();
-    const path = `/images/videos/${file.name}`;
-    const ref = storage.ref(path);
-    await ref.put(file);
-    const url = await ref.getDownloadURL();
-    setVideoUrl(url);
-    setVideo(null);
   }
 
   return (

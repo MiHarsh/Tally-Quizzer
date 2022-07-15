@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import firebase from "../firebase";
+import firebase, { googleProvider, auth } from "../firebase";
 
 export default function Login() {
   const emailRef = useRef();
@@ -13,17 +13,25 @@ export default function Login() {
   const history = useHistory();
 
   function signInWithGoogle() {
-    var google_provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
-      .signInWithPopup(google_provider)
+      .signInWithPopup(googleProvider)
       .then((re) => {
         console.log(re);
       })
       .catch((error) => {
         console.log(error);
+        setError("Failed to log in");
       });
   }
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      setError("");
+      history.push("/dashboard");
+      console.log(user);
+    }
+  });
 
   async function handleSubmit(e) {
     e.preventDefault();
