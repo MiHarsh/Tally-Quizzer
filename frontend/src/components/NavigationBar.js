@@ -30,6 +30,7 @@ export default function NavigationBar() {
           <Nav.Link href="/quizes">Quizes</Nav.Link>
           <Nav.Link href="/scorecard">Score</Nav.Link>
           <Nav.Link href="/addparticipant"> Participant</Nav.Link>
+          <Nav.Link href="/features"> features</Nav.Link>
           {currentUser && (
             <>
               <Nav.Link href="/dashboard">Dashboard</Nav.Link>

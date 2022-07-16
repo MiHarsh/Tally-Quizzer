@@ -37,7 +37,8 @@ export default function ParticipantList() {
         recordsAfterPagingAndSorting
     } = useTable(records, headCells, filterFn);
 
-    const [userData,setUserData] = useState([{email:'abc@',name:'xyz'}])
+    const [userData,setUserData] = useState([{email:'abc@gmail.com',name:'xyz'},{email:'bob@gmail.com',name:'bob'},
+    {email:'alice@gmail.com',name:'alice'}])
     
 
     const handleSearch = e => {

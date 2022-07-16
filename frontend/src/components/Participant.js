@@ -39,6 +39,11 @@ export default function Participants() {
         recordsAfterPagingAndSorting
     } = useTable(records, headCells, filterFn);
 
+    const [userData,setUserData] = useState([{email:'abc@gmail.com',name:'xyz',obtained:'20',total:'30'},
+    ,{email:'bob@gmail.com',name:'bob',obtained:'15',total:'30'},
+    {email:'alice@gmail.com',name:'alice',obtained:'25',total:'30'}
+    ])
+
     const handleSearch = e => {
         let target = e.target;
         setFilterFn({
@@ -82,6 +87,17 @@ export default function Participants() {
                                 </TableRow>)
                             )
                         }
+
+{ 
+                                userData.map((item,index) =>{
+                                    return <TableRow >
+                                    <TableCell>{item.name}</TableCell>
+                                    <TableCell>{item.email}</TableCell>
+                                    <TableCell>{item.obtained}</TableCell>
+                                    <TableCell>{item.total}</TableCell>
+                                </TableRow>
+                                })
+                                }
                     </TableBody>
                 </TblContainer>
                 <TblPagination />

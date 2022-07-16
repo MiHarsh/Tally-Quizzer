@@ -44,6 +44,7 @@ const useStyles = makeStyles({
 export default function Scorecard() {
   const classes = useStyles();
 
+  
   return (
     <ThemeProvider theme={theme}>
       {/* <SideMenu /> */}

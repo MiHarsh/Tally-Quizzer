@@ -31,6 +31,9 @@ export const Quizes = () => {
       <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
           <Button className="btn btn-primary mx-5">Edit Time</Button>
         <Button className="btn btn-danger mx-5">Terminate</Button>
+        <a href="/addparticipant">
+        <Button className="btn btn-info mx-5">View Participant</Button>
+        </a>
       </div>
     </div>
     <div className="result mx-auto py-3 px-3 mt-2"> 
@@ -55,7 +58,7 @@ export const Quizes = () => {
       </div>
     </div>
     <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
-      <Button className="btn btn-secondary mx-5">See Results</Button>
+      <a href="/scorecard"><Button className="btn btn-secondary mx-5">See Results</Button></a>
     </div>
   </div>
   </>
