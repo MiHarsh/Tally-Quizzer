@@ -12,6 +12,8 @@ import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
 import StudentLogin from "./StudentLogin";
 import {Quizes }from "./Quizes"
+import Scorecard from "./Scorecard";
+// import ParticipantForm from "./AddParticipants";
 
 function App() {
   return (
@@ -36,6 +38,9 @@ function App() {
             />
             <PublicRoute exact path="/studentLogin" component={StudentLogin} />
             <PublicRoute exact path="/quizes" component={Quizes} />
+            <PublicRoute exact path="/scorecard" component={Scorecard} />
+            {/* <PublicRoute exact path="/addparticipant" component={ParticipantForm} /> */}
+            
           </Switch>
         </AuthProvider>
       </Router>

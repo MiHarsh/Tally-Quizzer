@@ -160,7 +160,7 @@ export default function CreateQuiz() {
               numbers x, does the graph of g intersect the graph of f ?
             </p>
             <br />
-            <p>ADD media Syntax </p>
+            {/* <p>ADD media Syntax </p> */}
             <br />
             <p style={{ minWidth: "100%" }}>
               <b>A. &nbsp;</b>option 1{" "}

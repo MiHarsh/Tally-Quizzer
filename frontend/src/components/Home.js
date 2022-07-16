@@ -2,19 +2,37 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import prof from "./images/2406-ai.png";
 import exam from "./images/exams.png";
+import "./Home.css";
 
 export default function Home() {
   return (
     <div className="align-items-center justify-content-center" >
-      <div style={{backgroundColor:'rgb(39 20 70)', }}>
+      <div style={{background: "linear-gradient(45deg,#03001e,#7303c0,#ec38bc,#fdeff9)" }}>
+      {/* <header class="text-center text-white py-5"> */}
+     
+      
+    {/* </header> */}
         <Container  >
           <Row  > 
-          <Col>
-              <div style={{ maxWidth: "200px", marginTop: "10rem" }}>
-                <h1 style={{ color: "#007bff", marginLeft: "5rem" }}>
-                  quizzer base
-                </h1>
+          <Col className="pt-4">
+          <h5 class="">Generate QUIZZES With MisFits Interactive Quiz maker</h5>
+      <p class="mb-0">Taking a quiz is fun and engaging. And creating one should be too.</p>
+              <div style={{ maxWidth: "200px", marginTop: "5rem" }}>
+                
+                <a href="/login">
+              <button className="btn getstarted" size="sm">
+                 Create Quiz
+              </button>{" "}
+            </a>
+          
+            {/* <p1>Create your own Quiz</p1> */}
+               
               </div>
+              <a href="/">
+              <button variant="primary" size="sm">
+                 Take QUIZ
+              </button>{" "}
+            </a>
             </Col>
             <Col>
               <div style={{ marginTop: "5rem" }}>
@@ -23,13 +41,13 @@ export default function Home() {
             </Col>
            
           </Row>
-          <div style={{ textAlign: "center", marginTop: "3rem" }}>
+          {/* <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <a href="/dashboard">
               <Button variant="primary" size="lg">
                 Go To Dashboard
               </Button>{" "}
             </a>
-          </div>
+          </div> */}
         </Container>
         <div
           style={{
