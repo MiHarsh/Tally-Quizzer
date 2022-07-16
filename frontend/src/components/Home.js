@@ -7,32 +7,30 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="align-items-center justify-content-center" >
-      <div style={{background: "linear-gradient(45deg,#03001e,#7303c0,#ec38bc,#fdeff9)" }}>
-      {/* <header class="text-center text-white py-5"> */}
-     
-      
-    {/* </header> */}
+      <div >
         <Container  >
           <Row  > 
-          <Col className="pt-4">
-          <h5 class="">Generate QUIZZES With MisFits Interactive Quiz maker</h5>
-      <p class="mb-0">Taking a quiz is fun and engaging. And creating one should be too.</p>
-              <div style={{ maxWidth: "200px", marginTop: "5rem" }}>
+          <Col className="pt-4" style={{marginTop:'4rem',fontFamily:'Quicksand'}}>
+        
+          <h2 ><b>Quizzing Made Easy</b></h2>
+          <br />
+            <h5 class="mb-0" >Taking a quiz is fun and engaging.
+              <br />Then creating one should be too.
+              </h5>
+              <div className="row" style={{ maxWidth: "400px", marginTop: "5rem" }}>
                 
-                <a href="/login">
-              <button className="btn getstarted" size="sm">
+                <a href="/login" className="col-6">
+              <button className="btn btn-primary " variant="primary"size="sm">
                  Create Quiz
               </button>{" "}
             </a>
-          
-            {/* <p1>Create your own Quiz</p1> */}
-               
-              </div>
-              <a href="/">
-              <button variant="primary" size="sm">
-                 Take QUIZ
+             
+              <a href="/" className="col-6">
+              <button className="btn btn-primary " variant="primary" size="sm">
+                 Take Quiz
               </button>{" "}
             </a>
+            </div>
             </Col>
             <Col>
               <div style={{ marginTop: "5rem" }}>
@@ -41,6 +39,7 @@ export default function Home() {
             </Col>
            
           </Row>
+          <br />
           {/* <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <a href="/dashboard">
               <Button variant="primary" size="lg">
@@ -51,9 +50,9 @@ export default function Home() {
         </Container>
         <div
           style={{
-            background: 'rgb(19 1 48)',
+            background: 'rgb(16 60 139)',
             textAlign: "center",
-            paddingTop: "2rem",
+            paddingTop: "1.8rem",
             paddingBottom: "2rem",
             
           }}
