@@ -3,7 +3,69 @@ const express = require("express");
 const router = express.Router();
 
 const calculateScore = (original, answered) => {
-  return 24;
+  let score = 0;
+  let updatedAns = answered;
+
+  for (let key in answered) {
+    let ccount = 0;
+
+    if (!answered[key].attempted) {
+      continue;
+    }
+
+    if (answered[key].opt1 === true) {
+      if (original[key].opt1 === false) {
+        // wrong answer
+        updatedAns[key]["isCorrect"] = false;
+        continue;
+      } else {
+        ccount += 1;
+      }
+    }
+
+    if (answered[key].opt2 === true) {
+      if (original[key].opt2 === false) {
+        // wrong answer
+        updatedAns[key]["isCorrect"] = false;
+        continue;
+      } else {
+        ccount += 1;
+      }
+    }
+
+    if (answered[key].opt3 === true) {
+      if (original[key].opt3 === false) {
+        // wrong answer
+        updatedAns[key]["isCorrect"] = false;
+        continue;
+      } else {
+        ccount += 1;
+      }
+    }
+
+    if (answered[key].opt4 === true) {
+      if (original[key].opt4 === false) {
+        // wrong answer
+        updatedAns[key]["isCorrect"] = false;
+        continue;
+      } else {
+        ccount += 1;
+      }
+    }
+
+    if (
+      original[key].totalCorrect === 1 ||
+      ccount === original[key].totalCorrect
+    ) {
+      score += parseInt(original[key].mmarks);
+    } else {
+      score += (4 * ccount) / parseInt(original[key].mmarks);
+    }
+
+    updatedAns[key]["isCorrect"] = true;
+  }
+
+  return { score: score, ans: updatedAns };
 };
 
 router.post("/", (req, res) => {
@@ -19,8 +81,6 @@ router.post("/", (req, res) => {
     .ref("quizTakers/" + req.body.quizID + "/" + req.body.tokenID + "/answers")
     .update(req.body.answers);
 
-  let score = 0;
-
   req.app
     .get("db")
     .ref("quizTakers/" + req.body.quizID)
@@ -35,12 +95,13 @@ router.post("/", (req, res) => {
             "value",
             (snapshot) => {
               const answers = snapshot.val();
-              score = calculateScore(answers, req.body.answers);
+              let { score, ans } = calculateScore(answers, req.body.answers);
               req.app
                 .get("db")
                 .ref("quizTakers/" + req.body.quizID + "/" + req.body.tokenID)
                 .update({
                   score: score,
+                  answers: ans,
                 });
             },
             (errorObject) => {

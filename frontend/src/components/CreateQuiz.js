@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Button,
-  Alert,
-  Container,
-  Form,
-  Row,
-  Col,
-  InputGroup,
-  ButtonToolbar,
-} from "react-bootstrap";
+import { Container, Form, InputGroup } from "react-bootstrap";
 import "./CreateQuiz.css";
 import AddQuesModal from "./AddQuesModal";
 import QuestionDetails from "./CreateQuiz/QuestionDetails";
@@ -19,7 +9,6 @@ export default function CreateQuiz() {
   const { currentUser } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
   const [quesList, setQuesList] = useState({});
-  console.log("Imported about");
 
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
