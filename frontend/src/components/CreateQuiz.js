@@ -18,8 +18,9 @@ export default function CreateQuiz() {
   const [modalOpen, setModalOpen] = useState(false);
   console.log("Imported about");
   return (
+    <div style={{background: "linear-gradient(45deg,#C04848,#480048)" }}>
     <Container className="containerr ">
-      <div className="row  parentbox ml-0 block-example border border-dark paper">
+      <div  className="row  parentbox ml-0 block-example border border-dark paper">
         <div
           className="col-3 pr-4 ml-0 pt-3 block-example border-right border-dark "
           style={{ zIndex: 1, height: "89vh", position: "absolute" }}
@@ -132,5 +133,6 @@ export default function CreateQuiz() {
         </div>
       </div>
     </Container>
+    </div>
   );
 }

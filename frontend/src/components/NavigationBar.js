@@ -3,7 +3,7 @@ import "firebase/storage";
 import { Navbar, Nav, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-
+import "./CreateQuiz.css";
 export default function NavigationBar() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
@@ -53,6 +53,7 @@ export default function NavigationBar() {
           )}
         </Nav>
       </Navbar>
+      
       {error && <Alert variant="danger">{error}</Alert>}
     </>
   );
