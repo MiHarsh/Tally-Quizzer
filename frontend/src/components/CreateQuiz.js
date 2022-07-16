@@ -152,7 +152,10 @@ export default function CreateQuiz() {
             <h2>Quiz Name</h2>
           </div>
           <div className="row pl-3">
-            <b>Question 1:</b>
+            
+            <b>Question 1:</b><pre>                                                                   </pre>
+            <button className="btn btn-danger">Delete</button>
+            
             <p>
               The figure above shows the graph of the function f, defined by f
               of x = the absolute value of 2x, end absolute value, + 4 for all
@@ -179,7 +182,8 @@ export default function CreateQuiz() {
             </p>
           </div>
           <div className="row pl-3">
-            <b>Question 1:</b>
+          <b>Question 2:</b><pre>                                                                   </pre>
+            <button className="btn btn-danger">Delete</button>
             <p>
               The figure above shows the graph of the function f, defined by f
               of x = the absolute value of 2x, end absolute value, + 4 for all

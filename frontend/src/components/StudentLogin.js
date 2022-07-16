@@ -1,6 +1,6 @@
 import React from "react";
 import { Container,Form,InputGroup } from "react-bootstrap";
-
+import DateTime from './DateTime/DateTime'
 export default function StudentLogin() {
   console.log("i am improted");
   return (
@@ -29,6 +29,7 @@ export default function StudentLogin() {
       
       <button className="btn btn-primary mx-auto">Start Quiz</button>
       </div>
+      <DateTime/>
     </Container>
   );
 }
