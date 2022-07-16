@@ -10,10 +10,10 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
-import StudentLogin from "./StudentLogin";
+import ParticipantLogin from "./Participant";
 import {Quizes }from "./Quizes"
 import Scorecard from "./Scorecard";
-import ParticipantForm from "./AddParticipant/ParticipantForm";
+import ParticipantList from "./AddParticipant/ParticipantList";
 import Featurespage from './Features/Featurespage'
 
 
@@ -38,10 +38,10 @@ function App() {
               path="/forgot-password"
               component={ForgotPassword}
             />
-            <PublicRoute exact path="/studentLogin" component={StudentLogin} />
+            <PublicRoute exact path="/ParticipantLogin" component={ParticipantLogin} />
             <PublicRoute exact path="/quizes" component={Quizes} />
             <PublicRoute exact path="/scorecard" component={Scorecard} />
-            <PublicRoute exact path="/addparticipant" component={ParticipantForm} />
+            <PublicRoute exact path="/addparticipant" component={ParticipantList} />
             <PublicRoute exact path="/features" component={Featurespage} />
           </Switch>
         </AuthProvider>

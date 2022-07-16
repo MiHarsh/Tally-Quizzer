@@ -1,7 +1,7 @@
 import React from "react";
 import { Container,Form,InputGroup } from "react-bootstrap";
 import DateTime from './DateTime/DateTime'
-export default function StudentLogin() {
+export default function ParticipantLogin() {
   console.log("i am improted");
   return (
     <Container>

@@ -7,6 +7,7 @@ import useTable from "../../components/scoreUtils/useTable";
 import * as employeeService from "../../components/employeservice";
 import Controls from "../../components/scoreUtils/controls/Controls";
 import { Search } from "@material-ui/icons";
+import ParticipantForm from "./ParticipantForm";
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
@@ -55,9 +56,9 @@ export default function ParticipantList() {
 
     return (
         <>
-            <PageHeader
-                title="Participant List "
-            />
+            <br/>
+                <h5 className="ml-5">Participant List</h5>
+            <ParticipantForm />
             <Paper >
                 <Toolbar className={classes.pageContent}>
                     <Controls.Input

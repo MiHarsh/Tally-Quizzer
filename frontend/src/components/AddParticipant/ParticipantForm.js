@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, InputGroup,Form,Button} from 'react-bootstrap'
 
-import ParticipantList from "./ParticipantList";
+// import ParticipantList from "./ParticipantList";
 export default function  ParticipantForm  () {
   return (
     <Container>
@@ -25,7 +25,7 @@ export default function  ParticipantForm  () {
       
       <Button className="mx-auto "variant="primary" size="sm">Add Participant</Button>
       </div>
-      <ParticipantList/>
+      {/* <ParticipantList/> */}
     </Container>
   )
 }

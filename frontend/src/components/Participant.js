@@ -26,7 +26,7 @@ const headCells = [
     { id: 'Total Marks', label: 'Total Marks', disableSorting: true },
 ]
 
-export default function Participants() {
+export default function ParticipantLogin() {
 
     const classes = useStyles();
     const [records, setRecords] = useState(employeeService.getAllEmployees())

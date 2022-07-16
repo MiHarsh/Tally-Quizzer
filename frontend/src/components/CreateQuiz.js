@@ -11,6 +11,7 @@ import {
   ButtonToolbar,
 } from "react-bootstrap";
 import "./CreateQuiz.css";
+import DateTime from './DateTime/DateTime'
 import AddQuesModal from "./AddQuesModal";
 
 export default function CreateQuiz() {
@@ -31,97 +32,13 @@ export default function CreateQuiz() {
               aria-describedby="basic-addon1"
             />
           </InputGroup>
-          <Form.Label>Start Date</Form.Label>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="dd"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-            <h3>
-              <b>&nbsp;/&nbsp;</b>
-            </h3>
-            <Form.Control
-              placeholder="mm"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-            <h3>
-              <b>&nbsp;/&nbsp;</b>
-            </h3>
-            <Form.Control
-              placeholder="yyyy"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "120px" }}
-            />
-          </InputGroup>
-          <Form.Label>Start Time</Form.Label>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="hh"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-            <h3>
-              <b>&nbsp;:&nbsp;</b>
-            </h3>
-            <Form.Control
-              placeholder="mm"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-          </InputGroup>
-          <Form.Label>End Date</Form.Label>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="dd"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-            <h3>
-              <b>&nbsp;/&nbsp;</b>
-            </h3>
-            <Form.Control
-              placeholder="mm"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-            <h3>
-              <b>&nbsp;/&nbsp;</b>
-            </h3>
-            <Form.Control
-              placeholder="yyyy"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "120px" }}
-            />
-          </InputGroup>
-          <Form.Label>End Time</Form.Label>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="hh"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-            <h3>
-              <b>&nbsp;:&nbsp;</b>
-            </h3>
-            <Form.Control
-              placeholder="mm"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              style={{ maxWidth: "60px" }}
-            />
-          </InputGroup>
-
+          
+          <p>Start Date and Time</p>
+            <DateTime/>
+            <br />
+          <p>End Date and Time</p>
+            <DateTime/>
+            <br />
           <div className="row ml-1 d-flex justify-content-center ">
             <Form.Group controlId="formFileMultiple" className="mb-3">
               <Form.Label>Add Participants List</Form.Label>
@@ -133,14 +50,17 @@ export default function CreateQuiz() {
             </Form.Group>
           </div>
           <div className="row d-flex justify-content-center ">
-            <button
-              className="btn btn-primary "
-              onClick={() => {
-                setModalOpen(true);
-              }}
-            >
+            <button className="btn btn-primary " onClick={() => { setModalOpen(true);}}>
               Add Question
             </button>
+          </div>
+          <div className="row d-flex justify-content-center mt-2 ">
+            <a href="/addparticipant"> 
+            <button
+              className="btn btn-primary ">
+              Add Participants
+            </button>
+            </a>
           </div>
           {modalOpen && <AddQuesModal setOpenModal={setModalOpen} />}
         </div>

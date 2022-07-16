@@ -26,7 +26,7 @@ export default function NavigationBar() {
         <Nav className="mr-auto" >
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/createquiz">Create Quiz</Nav.Link>
-          <Nav.Link href="/studentLogin">StudentLogin</Nav.Link>
+          <Nav.Link href="/ParticipantLogin">ParticipantLogin</Nav.Link>
           <Nav.Link href="/quizes">Quizes</Nav.Link>
           <Nav.Link href="/scorecard">Score</Nav.Link>
           <Nav.Link href="/addparticipant"> Participant</Nav.Link>
