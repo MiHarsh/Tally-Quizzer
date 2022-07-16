@@ -43,6 +43,8 @@ app.use("/api/allData", require("./routes/getalldata"));
 app.use("/api/create", require("./routes/createschema"));
 app.use("/api/saveQues", require("./routes/saveQues"));
 app.use("/api/getQues", require("./routes/getallQues"));
+app.use("/api/getQuesWithLogin", require("./routes/getallQuesWithLogin"));
+app.use("/api/saveResponse", require("./routes/saveUserResponse"));
 
 // serve static assets if we are in production
 if (process.env.NODE_ENV === "production") {

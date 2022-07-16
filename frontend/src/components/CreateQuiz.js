@@ -180,21 +180,25 @@ export default function CreateQuiz() {
             <h2>Quiz Name</h2>
           </div>
 
-          {Object.keys(quesList).map((key, idx) => {
-            let { question, opt1, opt2, opt3, opt4 } = quesList[key];
+          {quesList ? (
+            Object.keys(quesList).map((key, idx) => {
+              let { question, opt1, opt2, opt3, opt4 } = quesList[key];
 
-            return (
-              <QuestionDetails
-                key={idx}
-                index={idx}
-                question={question}
-                opt1={opt1}
-                opt2={opt2}
-                opt3={opt3}
-                opt4={opt4}
-              />
-            );
-          })}
+              return (
+                <QuestionDetails
+                  key={idx}
+                  index={idx}
+                  question={question}
+                  opt1={opt1}
+                  opt2={opt2}
+                  opt3={opt3}
+                  opt4={opt4}
+                />
+              );
+            })
+          ) : (
+            <div>load</div>
+          )}
         </div>
       </div>
     </Container>

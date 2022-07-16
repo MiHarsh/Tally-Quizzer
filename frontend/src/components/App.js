@@ -1,7 +1,7 @@
 import React from "react";
 import Register from "./Register";
 import { AuthProvider } from "../contexts/AuthContext";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
@@ -11,7 +11,8 @@ import UpdateProfile from "./UpdateProfile";
 import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
 import StudentLogin from "./StudentLogin";
-import {Quizes }from "./Quizes"
+import { Quizes } from "./Quizes";
+import QuizTaker from "./QuizTaker/QuizTaker";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             />
             <PublicRoute exact path="/register" component={Register} />
             <PublicRoute exact path="/login" component={Login} />
-            <PublicRoute path="/createquiz" component={CreateQuiz} />
+            <PrivateRoute path="/createquiz" component={CreateQuiz} />
             <PublicRoute exact path="/" component={Home} />
             <PublicRoute
               exact
@@ -36,6 +37,7 @@ function App() {
             />
             <PublicRoute exact path="/studentLogin" component={StudentLogin} />
             <PublicRoute exact path="/quizes" component={Quizes} />
+            <Route path="/attempt" component={QuizTaker} />
           </Switch>
         </AuthProvider>
       </Router>

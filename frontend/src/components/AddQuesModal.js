@@ -15,7 +15,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
     opt2: "",
     opt3: "",
     opt4: "",
-    mmarks: "",
+    mmarks: 0,
   });
 
   const [correct, setCorrect] = useState({
@@ -24,6 +24,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
     opt3: false,
     opt4: false,
     totalCorrect: 0,
+    mmarks: 0,
   });
 
   // handle change event
@@ -169,12 +170,18 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
                 Maximum Marks :
               </Form.Label>
               <Form.Control
-                placeholder="00"
+                placeholder={0}
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 style={{ maxWidth: "60px" }}
                 name="mmarks"
-                onChange={handleChange}
+                onChange={(e) => [
+                  handleChange(e),
+                  setCorrect({
+                    ...correct,
+                    mmarks: e.target.value,
+                  }),
+                ]}
                 value={tmp.mmarks}
               />
             </Form.Group>
