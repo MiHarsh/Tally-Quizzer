@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import { Container } from "react-bootstrap";
 
-export default function StudentLogin () {
+export default function StudentLogin() {
+  console.log("i am improted");
   return (
-    <div>StudentLogin</div>
-  )
+    <Container>
+      <div>StudentLogin</div>
+    </Container>
+  );
 }
