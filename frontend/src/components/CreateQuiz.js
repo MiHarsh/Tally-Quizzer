@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   Button,
@@ -12,10 +12,32 @@ import {
 } from "react-bootstrap";
 import "./CreateQuiz.css";
 import AddQuesModal from "./AddQuesModal";
+import QuestionDetails from "./CreateQuiz/QuestionDetails";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function CreateQuiz() {
+  const { currentUser } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
+  const [quesList, setQuesList] = useState({});
   console.log("Imported about");
+
+  useEffect(() => {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        currentUser: currentUser.email.replace(".", ""),
+        quizID: new URLSearchParams(window.location.search).get("quesID"),
+      }),
+    };
+    fetch("/api/getQues", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setQuesList(data));
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
+
   return (
     <Container className="containerr ">
       <div className="row  parentbox ml-0 block-example border border-dark paper">
@@ -142,7 +164,13 @@ export default function CreateQuiz() {
               Add Question
             </button>
           </div>
-          {modalOpen && <AddQuesModal setOpenModal={setModalOpen} />}
+          {modalOpen && (
+            <AddQuesModal
+              setOpenModal={setModalOpen}
+              setQuestion={setQuesList}
+              quesList={quesList}
+            />
+          )}
         </div>
         <div className="col-8  pt-4 ml-auto mr-2 ">
           <div
@@ -151,60 +179,22 @@ export default function CreateQuiz() {
           >
             <h2>Quiz Name</h2>
           </div>
-          <div className="row pl-3">
-            <b>Question 1:</b>
-            <p>
-              The figure above shows the graph of the function f, defined by f
-              of x = the absolute value of 2x, end absolute value, + 4 for all
-              numbers x. For which of the following functions g, defined for all
-              numbers x, does the graph of g intersect the graph of f ?
-            </p>
-            <br />
-            <p>ADD media Syntax </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>A. &nbsp;</b>option 1{" "}
-            </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>B. &nbsp;</b>option 2{" "}
-            </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>C. &nbsp;</b>option 3{" "}
-            </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>D. &nbsp;</b>option 4{" "}
-            </p>
-          </div>
-          <div className="row pl-3">
-            <b>Question 1:</b>
-            <p>
-              The figure above shows the graph of the function f, defined by f
-              of x = the absolute value of 2x, end absolute value, + 4 for all
-              numbers x. For which of the following functions g, defined for all
-              numbers x, does the graph of g intersect the graph of f ?
-            </p>
-            <br />
-            <p>ADD media Syntax </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>A. &nbsp;</b>option 1{" "}
-            </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>B. &nbsp;</b>option 2{" "}
-            </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>C. &nbsp;</b>option 3{" "}
-            </p>
-            <br />
-            <p style={{ minWidth: "100%" }}>
-              <b>D. &nbsp;</b>option 4{" "}
-            </p>
-          </div>
+
+          {Object.keys(quesList).map((key, idx) => {
+            let { question, opt1, opt2, opt3, opt4 } = quesList[key];
+
+            return (
+              <QuestionDetails
+                key={idx}
+                index={idx}
+                question={question}
+                opt1={opt1}
+                opt2={opt2}
+                opt3={opt3}
+                opt4={opt4}
+              />
+            );
+          })}
         </div>
       </div>
     </Container>

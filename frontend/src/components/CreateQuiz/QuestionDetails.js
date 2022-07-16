@@ -1,9 +1,10 @@
 import React from "react";
 
-export default function QuestionDetails({ props }) {
+export default function QuestionDetails(props) {
   return (
     <div className="row pl-3">
       <b>Question {props.index}:</b>
+      <br />
       <p>{props.question}</p>
       <br />
       <br />

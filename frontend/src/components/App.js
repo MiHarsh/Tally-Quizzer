@@ -26,7 +26,7 @@ function App() {
             />
             <PublicRoute exact path="/register" component={Register} />
             <PublicRoute exact path="/login" component={Login} />
-            <PublicRoute exact path="/createquiz" component={CreateQuiz} />
+            <PublicRoute path="/createquiz" component={CreateQuiz} />
             <PublicRoute exact path="/" component={Home} />
             <PublicRoute
               exact
