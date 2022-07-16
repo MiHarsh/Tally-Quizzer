@@ -1,38 +1,27 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import prof from "./images/class.png";
+import prof from "./images/2406-ai.png";
 import exam from "./images/exams.png";
 
 export default function Home() {
   return (
-    <div className="align-items-center justify-content-center">
-      <div>
-        <Container>
-          <Row>
-            <Col>
-              <div style={{ maxWidth: "400px", marginTop: "10rem" }}>
-                <h1 style={{ color: "#007bff" }}>Quizzer - base</h1>
-              </div>
-            </Col>
-            <Col>
-              <div style={{ marginTop: "5rem" }}>
-                <img src={prof} style={{ maxWidth: "500px" }} />
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div style={{ marginTop: "5rem" }}>
-                <img src={exam} style={{ maxWidth: "500px" }} />
-              </div>
-            </Col>
-            <Col>
-              <div style={{ maxWidth: "400px", marginTop: "10rem" }}>
+    <div className="align-items-center justify-content-center" >
+      <div style={{backgroundColor:'rgb(39 20 70)', }}>
+        <Container  >
+          <Row  > 
+          <Col>
+              <div style={{ maxWidth: "200px", marginTop: "10rem" }}>
                 <h1 style={{ color: "#007bff", marginLeft: "5rem" }}>
                   quizzer base
                 </h1>
               </div>
             </Col>
+            <Col>
+              <div style={{ marginTop: "5rem" }}>
+                <img src={prof} style={{ maxWidth: "700px", minWidth:'600px',Height:"90vh"}} />
+              </div>
+            </Col>
+           
           </Row>
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <a href="/dashboard">
@@ -44,11 +33,11 @@ export default function Home() {
         </Container>
         <div
           style={{
-            background: "#007bff",
+            background: 'rgb(19 1 48)',
             textAlign: "center",
             paddingTop: "2rem",
             paddingBottom: "2rem",
-            marginTop: "3rem",
+            
           }}
         >
           <p style={{ color: "white" }}>Copyright @2022 Team MisFits</p>

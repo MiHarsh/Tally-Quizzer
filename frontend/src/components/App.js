@@ -1,4 +1,4 @@
-import React from "react"
+import React  from "react"
 import Register from "./Register"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch } from "react-router-dom"
@@ -10,6 +10,9 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import About from "./About"
 import Home from "./Home"
+import StudentLogin from "./StudentLogin"
+
+
 
 function App() {
   return (
@@ -24,6 +27,7 @@ function App() {
                 <PublicRoute path="/about" component={About} />
                 <PublicRoute path="/" component={Home} />
                 <PublicRoute path="/forgot-password" component={ForgotPassword} />
+                <PublicRoute path="/studentLogin" component={StudentLogin} />
               </Switch>
             </AuthProvider>
           </Router>

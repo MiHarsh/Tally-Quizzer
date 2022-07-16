@@ -21,11 +21,12 @@ export default function NavigationBar() {
   }
   return (
     <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar  styles={{backgroundColor: "rgb(39 20 70)"}}>
         <Navbar.Brand href="#">Quizzer</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/studentLogin">StudentLogin</Nav.Link>
           {currentUser && (
             <>
               <Nav.Link href="/dashboard">Dashboard</Nav.Link>

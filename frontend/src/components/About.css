@@ -1,0 +1,24 @@
+.parentbox  {
+max-height:89vh;
+width: 90vw;
+left: 0;
+margin: 0 0 0 0;
+
+}
+
+.containerr{
+    margin: 1vh auto !important;
+    padding: 0!important;
+}
+.participantMedia {
+    border-width: 2px;
+    border-style: ridge;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 4px;
+    max-width: 96.5%;
+  }
+
+.paper{
+    overflow:auto ;
+}
