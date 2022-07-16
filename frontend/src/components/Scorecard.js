@@ -1,7 +1,7 @@
 import React from 'react';
 // import './App.css';
 import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from '@material-ui/core';
-// import PageHeader from "../../components/scoreAddl/PageHeader";
+// import PageHeader from "../../components/scoreUtils/PageHeader";
 
 import Participants from "./Participant";
 
@@ -47,11 +47,11 @@ export default function Scorecard() {
   return (
     <ThemeProvider theme={theme}>
       {/* <SideMenu /> */}
-      <div className={classes.appMain}>
+      {/* <div className={classes.appMain}> */}
         {/* <Header /> */}
         
         <Participants />
-      </div>
+      {/* </div> */}
       <CssBaseline />
     </ThemeProvider>
   );

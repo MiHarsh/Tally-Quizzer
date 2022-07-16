@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 // import EmployeeForm from "./EmployeeForm";
-import PageHeader from "./scoreUtils/PageHeader";
+import PageHeader from "../../components/scoreUtils/PageHeader";
 // import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import { Paper, makeStyles, TableBody, TableRow, TableCell, Toolbar, InputAdornment } from '@material-ui/core';
-import useTable from "./scoreUtils/useTable";
-import * as employeeService from "./employeservice";
-import Controls from "./scoreUtils/controls/Controls";
+import useTable from "../../components/scoreUtils/useTable";
+import * as employeeService from "../../components/employeservice";
+import Controls from "../../components/scoreUtils/controls/Controls";
 import { Search } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
@@ -22,11 +22,9 @@ const useStyles = makeStyles(theme => ({
 const headCells = [
     { id: 'fullName', label: 'Student Name' },
     { id: 'email', label: 'Email Address ' },
-    { id: 'Obtained', label: 'Obtained Marks ' },
-    { id: 'Total Marks', label: 'Total Marks', disableSorting: true },
 ]
 
-export default function Participants() {
+export default function ParticipantList() {
 
     const classes = useStyles();
     const [records, setRecords] = useState(employeeService.getAllEmployees())
@@ -38,6 +36,9 @@ export default function Participants() {
         TblPagination,
         recordsAfterPagingAndSorting
     } = useTable(records, headCells, filterFn);
+
+    const [userData,setUserData] = useState([{email:'abc@',name:'xyz'}])
+    
 
     const handleSearch = e => {
         let target = e.target;
@@ -54,7 +55,7 @@ export default function Participants() {
     return (
         <>
             <PageHeader
-                title="Quiz Name Score Card "
+                title="Participant List "
             />
             <Paper >
                 <Toolbar className={classes.pageContent}>
@@ -77,11 +78,17 @@ export default function Participants() {
                                 (<TableRow key={item.id}>
                                     <TableCell>{item.fullName}</TableCell>
                                     <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.Obtained}</TableCell>
-                                    <TableCell>{item.Total}</TableCell>
                                 </TableRow>)
                             )
                         }
+                                { 
+                                userData.map((item,index) =>{
+                                    return <TableRow >
+                                    <TableCell>{item.name}</TableCell>
+                                    <TableCell>{item.email}</TableCell>
+                                </TableRow>
+                                })
+                                }
                     </TableBody>
                 </TblContainer>
                 <TblPagination />
