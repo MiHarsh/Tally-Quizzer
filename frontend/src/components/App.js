@@ -11,6 +11,7 @@ import UpdateProfile from "./UpdateProfile";
 import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
 import StudentLogin from "./StudentLogin";
+import {Quizes }from "./Quizes"
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               component={ForgotPassword}
             />
             <PublicRoute exact path="/studentLogin" component={StudentLogin} />
+            <PublicRoute exact path="/quizes" component={Quizes} />
           </Switch>
         </AuthProvider>
       </Router>
