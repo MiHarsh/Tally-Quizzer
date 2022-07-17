@@ -10,7 +10,9 @@ export default function CreateQuiz() {
   const { currentUser } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
   const [quesList, setQuesList] = useState({});
+  const [metaData, setMetaData] = useState({});
 
+  console.log(metaData);
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
@@ -18,7 +20,7 @@ export default function CreateQuiz() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         currentUser: currentUser.email.replace(".", ""),
-        quizID: new URLSearchParams(window.location.search).get("quesID"),
+        quizID: new URLSearchParams(window.location.search).get("quizID"),
       }),
     };
     fetch("/api/getQues", requestOptions)
@@ -28,93 +30,123 @@ export default function CreateQuiz() {
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
-  return (
-      <Container >
-        <div className="row  parentbox ml-0 block-example  ">
-          <div
-            className="col-3 pr-4 ml-0 pt-3 block-example border-right border-dark "
-            style={{ zIndex: 1, height: "89vh", position: "absolute" }}
-          >
-            <Form.Label>Quiz Title</Form.Label>
-            <InputGroup className="mb-3">
-              <Form.Control
-                placeholder="Enter "
-                aria-label="Quizname"
-                aria-describedby="basic-addon1"
-              />
-            </InputGroup>
+  const handleClick = () => {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        currentUser: currentUser.email.replace(".", ""),
+        quizID: new URLSearchParams(window.location.search).get("quizID"),
+        metadata: metaData,
+      }),
+    };
+    fetch("/api/saveMetaData", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
 
-            <p>Start Date and Time</p>
-            <DateTime />
-            <br />
-            <p>End Date and Time</p>
-            <DateTime />
-            <br />
-            <div className="row ml-1 d-flex justify-content-center ">
-              <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Label>Add Participants List</Form.Label>
-                <Form.Control
-                  type="file"
-                  multiple
-                  className="participantMedia "
-                />
-              </Form.Group>
-            </div>
-            <div className="row d-flex justify-content-center ">
-              <button
-                className="btn btn-primary "
-                onClick={() => {
-                  setModalOpen(true);
-                }}
-              >
-                Add Question
+  return (
+    <Container>
+      <div className="row  parentbox ml-0 block-example  ">
+        <div
+          className="col-3 pr-4 ml-0 pt-3 block-example border-right border-dark "
+          style={{ zIndex: 1, height: "89vh", position: "absolute" }}
+        >
+          <Form.Label>Quiz Title</Form.Label>
+          <InputGroup className="mb-3">
+            <Form.Control
+              placeholder="Enter "
+              aria-label="Quizname"
+              aria-describedby="basic-addon1"
+              onChange={(e) => {
+                setMetaData({
+                  ...metaData,
+                  QuizName: e.target.value,
+                });
+              }}
+            />
+          </InputGroup>
+
+          <p>Start Date and Time</p>
+          <DateTime name="startTime" setMetaData={setMetaData} />
+          <br />
+          <p>End Date and Time</p>
+          <DateTime name="endTime" setMetaData={setMetaData} />
+          <br />
+          <div className="row ml-1 d-flex justify-content-center ">
+            <Form.Group controlId="formFileMultiple" className="mb-3">
+              <Form.Label>Add Participants List</Form.Label>
+              <Form.Control
+                type="file"
+                multiple
+                className="participantMedia "
+              />
+            </Form.Group>
+          </div>
+          <div className="row d-flex justify-content-center ">
+            <button
+              className="btn btn-primary "
+              onClick={() => {
+                setModalOpen(true);
+              }}
+            >
+              Add Question
+            </button>
+          </div>
+
+          {/* <div className="row d-flex justify-content-center mt-2 ">
+            <a href="/addparticipant">
+              <button className="btn btn-primary ">Add Participants</button>
+            </a>
+          </div> */}
+          <div className="row d-flex justify-content-center mt-2 ">
+            <a
+              href={
+                "/addparticipant?quizID=" +
+                new URLSearchParams(window.location.search).get("quizID")
+              }
+            >
+              <button className="btn btn-danger" onClick={handleClick}>
+                Save
               </button>
-            </div>
-            {/* {modalOpen && (
+            </a>
+          </div>
+          {modalOpen && (
             <AddQuesModal
               setOpenModal={setModalOpen}
+              quesList={quesList}
               setQuestion={setQuesList}
-              
             />
-          )} */}
-            <div className="row d-flex justify-content-center mt-2 ">
-              <a href="/addparticipant">
-                <button className="btn btn-primary ">Add Participants</button>
-              </a>
-            </div>
-            {modalOpen && (
-              <AddQuesModal
-                setOpenModal={setModalOpen}
-                quesList={quesList}
-                setQuestion={setQuesList}
-              />
-            )}
-          </div>
-          <div className="col-8  pt-4 ml-auto mr-2 ">
-            {quesList ? (
-              Object.keys(quesList).map((key, idx) => {
-                let { question, opt1, opt2, opt3, opt4 } = quesList[key];
-
-                return (
-                  <QuestionDetails
-                    key={idx}
-                    index={idx}
-                    question={question}
-                    opt1={opt1}
-                    opt2={opt2}
-                    opt3={opt3}
-                    opt4={opt4}
-                  />
-                );
-              })
-            ) : (
-              <div className="row d-flex justify-content-center mt-5 pt-5 mb-3 " style={{ zIndex: 1 , fontFamily:'QuickSand'}}
-            >
-                <h3 >Please Add Questions to Show !!</h3>
-              </div>
-            )}
-          </div>
+          )}
         </div>
-      </Container>
+        <div className="col-8  pt-4 ml-auto mr-2 ">
+          {quesList ? (
+            Object.keys(quesList).map((key, idx) => {
+              let { question, opt1, opt2, opt3, opt4 } = quesList[key];
+
+              return (
+                <QuestionDetails
+                  key={idx}
+                  index={idx}
+                  question={question}
+                  opt1={opt1}
+                  opt2={opt2}
+                  opt3={opt3}
+                  opt4={opt4}
+                />
+              );
+            })
+          ) : (
+            <div
+              className="row d-flex justify-content-center mt-5 pt-5 mb-3 "
+              style={{ zIndex: 1, fontFamily: "QuickSand" }}
+            >
+              <h3>Please Add Questions to Show !!</h3>
+            </div>
+          )}
+        </div>
+      </div>
+    </Container>
   );
 }
