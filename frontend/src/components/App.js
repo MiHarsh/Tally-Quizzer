@@ -11,7 +11,7 @@ import UpdateProfile from "./UpdateProfile";
 import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
 import TakeQuiz from "./QuizTaker/TakeQuiz";
-import DisplayNotif from "./QuizTaker/Notify"
+import DisplayNotif from "./QuizTaker/Notify";
 import QuizTaker from "./QuizTaker/QuizTaker";
 import ParticipantLogin from "./Participant";
 import { Quizes } from "./QuizHistory/Quizes";
