@@ -1,17 +1,17 @@
 .parentbox  {
-max-height:89vh;
-/* width: fit-content; */
+height:89vh;
 background-color: whitesmoke;
 left: 0;
 margin: 10 10 10 10;
-
+border-radius: 20px;
+box-shadow: 3px 3px rgb(192, 217, 226), -.4em  0.2em .4em rgb(151, 181, 218);
+overflow:auto ;
 }
 
 
-.containerr{
+.container{
     margin: 1vh auto !important;
-    padding: 0!important;
-    box-shadow: 3px 3px grey, -1em 0 .4em grey;
+    padding: 0!important; 
 }
 .participantMedia {
     border-width: 4px;
@@ -21,17 +21,6 @@ margin: 10 10 10 10;
     border-radius: 4px;
     max-width: 96.5%;
   }
-
-
-
-.paper{
-    overflow:auto ;
-}
-
-
-    
-  
-
 
 
 

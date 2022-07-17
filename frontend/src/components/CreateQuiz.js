@@ -29,9 +29,8 @@ export default function CreateQuiz() {
   }, []);
 
   return (
-    <div style={{ background: "linear-gradient(45deg,#C04848,#480048)" }}>
-      <Container className="containerr ">
-        <div className="row  parentbox ml-0 block-example border border-dark paper">
+      <Container >
+        <div className="row  parentbox ml-0 block-example  ">
           <div
             className="col-3 pr-4 ml-0 pt-3 block-example border-right border-dark "
             style={{ zIndex: 1, height: "89vh", position: "absolute" }}
@@ -92,13 +91,6 @@ export default function CreateQuiz() {
             )}
           </div>
           <div className="col-8  pt-4 ml-auto mr-2 ">
-            <div
-              className="row d-flex justify-content-center mt-0 mb-3 "
-              style={{ zIndex: 1 }}
-            >
-              <h2>Quiz Name</h2>
-            </div>
-
             {quesList ? (
               Object.keys(quesList).map((key, idx) => {
                 let { question, opt1, opt2, opt3, opt4 } = quesList[key];
@@ -116,11 +108,13 @@ export default function CreateQuiz() {
                 );
               })
             ) : (
-              <div className="row pl-3">load</div>
+              <div className="row d-flex justify-content-center mt-5 pt-5 mb-3 " style={{ zIndex: 1 , fontFamily:'QuickSand'}}
+            >
+                <h3 >Please Add Questions to Show !!</h3>
+              </div>
             )}
           </div>
         </div>
       </Container>
-    </div>
   );
 }
