@@ -29,17 +29,19 @@ export const Quizes = () => {
   }, []);
 
   return (
+
     <>
       {prev
         ? Object.keys(prev).map((key, idx) => {
             return (
-              <QuizCard
+              prev[key].metadata ?
+                <QuizCard
                 key={idx}
                 quizName={prev[key].metadata.QuizName}
                 startTime={prev[key].metadata.startTime}
                 endTime={prev[key].metadata.endTime}
                 quizID={key}
-              />
+              />:null
             );
           })
         : null}
