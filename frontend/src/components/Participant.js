@@ -57,12 +57,12 @@ export default function ParticipantLogin() {
     }
 
     return (
-        <>
+        <div className="mx-5 mt-4">
             <PageHeader
-                title="Quiz Name Score Card "
+                title="Score Card "
             />
             <Paper >
-                <Toolbar className={classes.pageContent}>
+                <Toolbar className={classes.pageContent} className="m=0">
                     <Controls.Input
                         label="Search Students"
                         className={classes.searchInput}
@@ -102,6 +102,6 @@ export default function ParticipantLogin() {
                 </TblContainer>
                 <TblPagination />
             </Paper>
-        </>
+        </div>
     )
 }
