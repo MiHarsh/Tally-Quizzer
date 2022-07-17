@@ -17,6 +17,7 @@ import ParticipantLogin from "./Participant";
 import { Quizes } from "./QuizHistory/Quizes";
 import Scorecard from "./Scorecard";
 import ParticipantList from "./AddParticipant/ParticipantList";
+import Statistic from "./Statistics/statistic"
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
               component={UpdateProfile}
             />
             <PublicRoute exact path="/register" component={Register} />
-            <PublicRoute exact path="/takequiz" component={DisplayNotif} />
+            <PublicRoute exact path="/takequiz" component={TakeQuiz} />
+            <PublicRoute exact path="/stats" component={Statistic} />
             <PublicRoute exact path="/login" component={Login} />
             <PrivateRoute path="/createquiz" component={CreateQuiz} />
             <PublicRoute exact path="/" component={Home} />

@@ -35,6 +35,7 @@ export default function NavigationBar() {
                 Create Quiz
               </Nav.Link>
               <Nav.Link href="/quizes" style={{color:"#ffffff"}}>Quizes</Nav.Link>
+              <Nav.Link href="/stats" style={{color:"#ffffff"}}>Statistics</Nav.Link>
               <Nav.Link href="/scorecard" style={{color:"#ffffff"}}>Score</Nav.Link>
               {/* <Nav.Link href="/addparticipant"> Participant</Nav.Link> */}
               <Nav.Link href="/dashboard" style={{color:"#ffffff"}}>Dashboard</Nav.Link>

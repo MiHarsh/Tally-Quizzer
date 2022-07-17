@@ -5,6 +5,7 @@ import DateTime from "./DateTime/DateTime";
 import AddQuesModal from "./AddQuesModal";
 import QuestionDetails from "./CreateQuiz/QuestionDetails";
 import { useAuth } from "../contexts/AuthContext";
+import Button from "./scoreUtils/controls/Button";
 
 export default function CreateQuiz() {
   const { currentUser } = useAuth();

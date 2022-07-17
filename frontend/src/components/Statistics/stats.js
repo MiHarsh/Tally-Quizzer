@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 // import EmployeeForm from "./EmployeeForm";
-import PageHeader from "./scoreUtils/PageHeader";
+import PageHeader from "../../components/scoreUtils/PageHeader";
 // import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import { Paper, makeStyles, TableBody, TableRow, TableCell, Toolbar, InputAdornment } from '@material-ui/core';
-import useTable from "./scoreUtils/useTable";
-import * as employeeService from "./employeservice";
-import Controls from "./scoreUtils/controls/Controls";
+import useTable from "../../components/scoreUtils/useTable";
+import * as employeeService from "../../components/employeservice";
+import Controls from "../../components/scoreUtils/controls/Controls";
 import { Search } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
@@ -20,13 +20,16 @@ const useStyles = makeStyles(theme => ({
 
 
 const headCells = [
-    { id: 'fullName', label: 'Participant Name' },
-    { id: 'email', label: 'Email Address ' },
-    { id: 'Obtained', label: 'Obtained Marks ' },
-    { id: 'Total Marks', label: 'Total Marks', disableSorting: true },
+    { id: 'quizName', label: 'Quiz Name' },
+    { id: 'pCount', label: 'No. of Participants' },
+    { id: 'start', label: 'Quiz Date' },
+    { id: 'average', label: 'Average Marks'},
+    { id: 'highest', label: 'Highest Marks ' },
+    { id: 'total', label: 'Total Marks', },
+    
 ]
 
-export default function ParticipantLogin() {
+export default function Stats() {
 
     const classes = useStyles();
     const [records, setRecords] = useState(employeeService.getAllEmployees())
@@ -39,9 +42,9 @@ export default function ParticipantLogin() {
         recordsAfterPagingAndSorting
     } = useTable(records, headCells, filterFn);
 
-    const [userData,setUserData] = useState([{email:'abc@gmail.com',name:'xyz',obtained:'20',total:'30'},
-    ,{email:'bob@gmail.com',name:'bob',obtained:'15',total:'30'},
-    {email:'alice@gmail.com',name:'alice',obtained:'25',total:'30'}
+    const [userData,setUserData] = useState([{quizName:'Math-I',pCount:'85',start:'17/07/2022',highest:'94',average:'56',total:'100' },
+    ,{quizName:'Math-II',pCount:'75',start:'16/07/2022',highest:'90',average:'59',total:'100'},
+    {quizName:'Math-II',pCount:'95',start:'17/07/2022',highest:'91',average:'60',total:'100'}
     ])
 
     const handleSearch = e => {
@@ -59,12 +62,12 @@ export default function ParticipantLogin() {
     return (
         <div className="mx-5 mt-4">
             <PageHeader
-                title="Score Card "
+                title="Quiz Stat"
             />
             <Paper >
                 <Toolbar className={classes.pageContent} className="m=0">
                     <Controls.Input
-                        label="Search Participants"
+                        label="Search"
                         className={classes.searchInput}
                         InputProps={{
                             startAdornment: (<InputAdornment position="start">
@@ -80,10 +83,12 @@ export default function ParticipantLogin() {
                         {
                             recordsAfterPagingAndSorting().map(item =>
                                 (<TableRow key={item.id}>
-                                    <TableCell>{item.fullName}</TableCell>
-                                    <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.Obtained}</TableCell>
-                                    <TableCell>{item.Total}</TableCell>
+                                    <TableCell>{item.quizName}</TableCell>
+                                    <TableCell>{item.pCount}</TableCell>
+                                    <TableCell>{item.start}</TableCell>
+                                    <TableCell>{item.average}</TableCell>
+                                    <TableCell>{item.highest}</TableCell>
+                                    <TableCell>{item.total}</TableCell>
                                 </TableRow>)
                             )
                         }
@@ -91,9 +96,11 @@ export default function ParticipantLogin() {
 { 
                                 userData.map((item,index) =>{
                                     return <TableRow >
-                                    <TableCell>{item.name}</TableCell>
-                                    <TableCell>{item.email}</TableCell>
-                                    <TableCell>{item.obtained}</TableCell>
+                                    <TableCell>{item.quizName}</TableCell>
+                                    <TableCell>{item.pCount}</TableCell>
+                                    <TableCell>{item.start}</TableCell>
+                                    <TableCell>{item.average}</TableCell>
+                                    <TableCell>{item.highest}</TableCell>
                                     <TableCell>{item.total}</TableCell>
                                 </TableRow>
                                 })
