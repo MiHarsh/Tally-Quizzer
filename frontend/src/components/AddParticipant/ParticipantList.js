@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const headCells = [
-  { id: "fullName", label: "Student Name" },
+  { id: "name", label: "Student Name" },
   { id: "email", label: "Email Address " },
 ];
 
@@ -38,17 +38,16 @@ export default function ParticipantList() {
   const { currentUser } = useAuth();
 
   const classes = useStyles();
-  const [records, setRecords] = useState(employeeService.getAllEmployees());
+
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
     },
   });
 
-  const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
-    useTable(records, headCells, filterFn);
-
   const [userData, setUserData] = useState([]);
+  const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
+    useTable(userData, headCells, filterFn);
 
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
@@ -83,7 +82,7 @@ export default function ParticipantList() {
         if (target.value == "") return items;
         else
           return items.filter((x) =>
-            x.fullName.toLowerCase().includes(target.value)
+            x.name.toLowerCase().includes(target.value)
           );
       },
     });
@@ -114,18 +113,10 @@ export default function ParticipantList() {
           <TableBody>
             {recordsAfterPagingAndSorting().map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.fullName}</TableCell>
+                <TableCell>{item.name}</TableCell>
                 <TableCell>{item.email}</TableCell>
               </TableRow>
             ))}
-            {userData.map((item, index) => {
-              return (
-                <TableRow>
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.email}</TableCell>
-                </TableRow>
-              );
-            })}
           </TableBody>
         </TblContainer>
         <TblPagination />
