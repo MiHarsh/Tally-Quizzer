@@ -1,17 +1,20 @@
 .parentbox  {
 max-height:89vh;
-width: 90vw;
+width: fit-content;
+background-color: whitesmoke;
 left: 0;
-margin: 0 0 0 0;
+margin: 10 10 10 10;
 
 }
+
 
 .containerr{
     margin: 1vh auto !important;
     padding: 0!important;
+    box-shadow: 3px 3px grey, -1em 0 .4em grey;
 }
 .participantMedia {
-    border-width: 2px;
+    border-width: 4px;
     border-style: ridge;
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
     border-image: initial;
@@ -19,6 +22,16 @@ margin: 0 0 0 0;
     max-width: 96.5%;
   }
 
+
+
 .paper{
     overflow:auto ;
 }
+
+
+    
+  
+
+
+
+

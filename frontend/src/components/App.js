@@ -13,6 +13,11 @@ import Home from "./Home";
 import StudentLogin from "./StudentLogin";
 import { Quizes } from "./Quizes";
 import QuizTaker from "./QuizTaker/QuizTaker";
+import ParticipantLogin from "./Participant";
+import { Quizes } from "./Quizes";
+import Scorecard from "./Scorecard";
+import ParticipantList from "./AddParticipant/ParticipantList";
+import Featurespage from "./Features/Featurespage";
 
 function App() {
   return (
@@ -35,9 +40,20 @@ function App() {
               path="/forgot-password"
               component={ForgotPassword}
             />
-            <PublicRoute exact path="/studentLogin" component={StudentLogin} />
+            <PublicRoute
+              exact
+              path="/ParticipantLogin"
+              component={ParticipantLogin}
+            />
             <PublicRoute exact path="/quizes" component={Quizes} />
             <Route path="/attempt" component={QuizTaker} />
+            <PublicRoute exact path="/scorecard" component={Scorecard} />
+            <PublicRoute
+              exact
+              path="/addparticipant"
+              component={ParticipantList}
+            />
+            <PublicRoute exact path="/features" component={Featurespage} />
           </Switch>
         </AuthProvider>
       </Router>
