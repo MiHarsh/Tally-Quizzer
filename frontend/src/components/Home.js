@@ -36,13 +36,14 @@ export default function Home() {
         <div
           style={{
             background: 'rgb(19 1 48)',
-            textAlign: "center",
-            paddingTop: "1.8rem",
-            paddingBottom: "2rem",
+            textAlign: "left",
+            marginTop: "2.9rem",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
             
           }}
         >
-          <p style={{ color: "white" }}>Copyright @2022 Team MisFits</p>
+          <p style={{ color: "white",fontFamily:"QuickSand",paddingLeft:"1rem" }}>Copyright @2022 Team MisFits</p>
         </div>
       </div>
     </div>

@@ -1,28 +1,32 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import "./Dashboard.css";
+import Img1 from "../../components/images/create.jpg";
+import Img2 from "../../components/images/analytics.jpg";
+import Button from "../scoreUtils/controls/Button";
+import { useHistory } from "react-router-dom";
 
 export default function Dashboard() {
+  const history = useHistory();
   return (
-    <Container>
+    <Container className="mt-5 pt-5">
+      <div className="row borderstyle" >
       <div className="split left">
-        <div className="centered">
-          <a href="/createquiz">
-            <button className="button button1">Create Quiz</button>
-          </a>
-          <h2 style={{ color: "aqua" }}>Click here for generating quiz</h2>
+        <div className="centered" >
+        <img src={Img1} style={{ Width:'500px',Height:"90vh"}} />
+        <br />
+          <Button text="Create Quiz " onClick={(e) => history.push("/createquiz")}></Button>
         </div>
       </div>
 
       <div className="split right">
         <div className="centered">
-          <a href="/quizes">
-            <button className="button button2">Quiz History</button>
-          </a>
-          <h2 style={{ color: "antiquewhite" }}>
-            Click here for viewing quiz history
-          </h2>
+        <img src={Img2} style={{ Width:'700px',Height:"190vh",}} className="mb-2" />
+        <br />
+            <Button text="Quiz History" onClick={(e) => history.push("/quizes")}></Button>
+         
         </div>
+      </div>
       </div>
     </Container>
   );
