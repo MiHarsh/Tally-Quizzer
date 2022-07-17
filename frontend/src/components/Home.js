@@ -1,32 +1,25 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import prof from "./images/2406-ai.png";
-import exam from "./images/exams.png";
 import "./CreateQuiz.css";
+import Button from "./scoreUtils/controls/Button";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
+  const history = useHistory();
   return (
     <div className="align-items-center justify-content-center" >
       <div >
         <Container  >
           <Row  > 
           <Col>
-              <div style={{ maxWidth: "200px", marginTop: "6rem" }}>
+              <div style={{ maxWidth: "300px", marginTop: "6rem" }}>
                 
-      {/* <h5 class="display-4 font-weight-bold mb-4">Generate QUIZZES With MisFits Interactive Quiz maker</h5>
-      <p class="lead mb-0">Taking a quiz is fun and engaging. And creating one should be too.</p> */}
-                <a href="/CreateQuiz">
-              <Button variant="primary" size="sm">
-                 Ceate Quiz              
-                 </Button>{" "}
-            </a>
-            <a href="/ParticipantLogin">
-              <Button variant="primary" size="sm">
-                 Take Quiz              
-                 </Button>{" "}
-            </a>
-          
-               
+              <Button text="Ceate Quiz" size="Large"onClick={(e) => history.push("/login")}>
+                 </Button>
+              <Button text="Learn More" size="Large" >
+                               
+                 </Button>               
               </div>
               <div className="">
 
@@ -39,13 +32,6 @@ export default function Home() {
             </Col>
            
           </Row>
-          {/* <div style={{ textAlign: "center", marginTop: "3rem" }}>
-            <a href="/dashboard">
-              <Button variant="primary" size="lg">
-                Go To Dashboard
-              </Button>{" "}
-            </a>
-          </div> */}
         </Container>
         <div
           style={{

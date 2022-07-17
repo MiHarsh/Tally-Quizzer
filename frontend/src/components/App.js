@@ -10,7 +10,7 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
-import StudentLogin from "./StudentLogin";
+import TakeQuiz from "./QuizTaker/TakeQuiz";
 import QuizTaker from "./QuizTaker/QuizTaker";
 import ParticipantLogin from "./Participant";
 import { Quizes } from "./Quizes";
@@ -30,6 +30,7 @@ function App() {
               component={UpdateProfile}
             />
             <PublicRoute exact path="/register" component={Register} />
+            <PublicRoute exact path="/takequiz" component={TakeQuiz} />
             <PublicRoute exact path="/login" component={Login} />
             <PrivateRoute path="/createquiz" component={CreateQuiz} />
             <PublicRoute exact path="/" component={Home} />

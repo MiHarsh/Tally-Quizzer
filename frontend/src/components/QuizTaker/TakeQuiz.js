@@ -1,7 +1,7 @@
 import React from "react";
 import { Container,Form,InputGroup } from "react-bootstrap";
-import DateTime from './DateTime/DateTime'
-export default function ParticipantLogin() {
+import Button from "../scoreUtils/controls/Button";
+export default function TakeQuiz() {
   console.log("i am improted");
   return (
     <Container>
@@ -25,11 +25,12 @@ export default function ParticipantLogin() {
           aria-describedby="inputGroup-sizing-sm"className="mt-1"
         />
       </InputGroup>
-      <br />
       
-      <button className="btn btn-primary mx-auto">Start Quiz</button>
+      
+      <Button text="Start Quiz" className="mx-auto" >Start Quiz</Button>
+      
       </div>
-      <DateTime/>
+     
     </Container>
   );
 }

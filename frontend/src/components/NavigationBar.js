@@ -25,13 +25,16 @@ export default function NavigationBar() {
         <Navbar.Brand href="#">Quizzer</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/createquiz">Create Quiz</Nav.Link>
-          <Nav.Link href="/ParticipantLogin">ParticipantLogin</Nav.Link>
-          <Nav.Link href="/quizes">Quizes</Nav.Link>
-          <Nav.Link href="/scorecard">Score</Nav.Link>
-          <Nav.Link href="/addparticipant"> Participant</Nav.Link>
+          
+          {/* <Nav.Link href="/takequiz">Take Quiz</Nav.Link> */}
+          
+          
           {currentUser && (
             <>
+              <Nav.Link href="/createquiz">Create Quiz</Nav.Link>
+              <Nav.Link href="/quizes">Quizes</Nav.Link>
+              <Nav.Link href="/scorecard">Score</Nav.Link>
+              <Nav.Link href="/addparticipant"> Participant</Nav.Link>
               <Nav.Link href="/dashboard">Dashboard</Nav.Link>
             </>
           )}
