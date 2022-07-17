@@ -27,7 +27,7 @@ export default function NavigationBar() {
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
 
-          {/* <Nav.Link href="/takequiz">Take Quiz</Nav.Link> */}
+          <Nav.Link href="/takequiz">Take Quiz</Nav.Link>
 
           {currentUser && (
             <>

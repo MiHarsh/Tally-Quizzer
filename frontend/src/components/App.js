@@ -45,7 +45,7 @@ function App() {
               component={ParticipantLogin}
             />
             <PublicRoute exact path="/quizes" component={Quizes} />
-            <Route path="/attempt" component={QuizTaker} />
+            <PublicRoute path="/attempt" component={QuizTaker} />
             <PublicRoute exact path="/scorecard" component={Scorecard} />
             <PublicRoute
               exact
