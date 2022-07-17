@@ -26,29 +26,31 @@ export default function ParticipantForm({ setUser }) {
   };
 
   const handleClick = () => {
-    setUser((prev) => {
-      return [...prev, { email: email, name: name }];
-    });
-    setName("");
-    setEmail("");
-
-    // saveUserTODB
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        emailID: email,
-        name: name,
-        creator: currentUser.email.replace(".", ""),
-        quizID: new URLSearchParams(window.location.search).get("quizID"),
-      }),
-    };
-    fetch("/api/addParticipants", requestOptions)
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => {
-        console.log(error);
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setUser((prev) => {
+        return [...prev, { email: email, name: name }];
       });
+      setName("");
+      setEmail("");
+
+      // saveUserTODB
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          emailID: email,
+          name: name,
+          creator: currentUser.email.replace(".", ""),
+          quizID: new URLSearchParams(window.location.search).get("quizID"),
+        }),
+      };
+      fetch("/api/addParticipants", requestOptions)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
