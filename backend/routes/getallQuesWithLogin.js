@@ -8,6 +8,7 @@ router.post("/", (req, res) => {
     .ref("quizTakers/" + req.body.quizID)
     .once("value", (snapshot) => {
       const val = snapshot.val();
+
       if (val && val[req.body.tokenID] !== undefined) {
         const creator = val.creator;
 
