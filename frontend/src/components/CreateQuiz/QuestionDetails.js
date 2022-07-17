@@ -6,6 +6,7 @@ export default function QuestionDetails(props) {
       <b>Question {props.index}:</b>
       <br />
       <p>{props.question}</p>
+      <button className="btn btn-danger">Delete</button>
       <br />
       <br />
       <p style={{ minWidth: "100%" }}>

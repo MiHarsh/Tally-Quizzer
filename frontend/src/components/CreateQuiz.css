@@ -1,6 +1,6 @@
 .parentbox  {
 max-height:89vh;
-width: fit-content;
+/* width: fit-content; */
 background-color: whitesmoke;
 left: 0;
 margin: 10 10 10 10;

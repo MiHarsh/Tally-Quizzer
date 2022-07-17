@@ -84,7 +84,11 @@ export default function CreateQuiz() {
               </a>
             </div>
             {modalOpen && (
-              <AddQuesModal setOpenModal={setModalOpen} quesList={quesList} />
+              <AddQuesModal
+                setOpenModal={setModalOpen}
+                quesList={quesList}
+                setQuestion={setQuesList}
+              />
             )}
           </div>
           <div className="col-8  pt-4 ml-auto mr-2 ">
@@ -112,7 +116,7 @@ export default function CreateQuiz() {
                 );
               })
             ) : (
-              <div>load</div>
+              <div className="row pl-3">load</div>
             )}
           </div>
         </div>

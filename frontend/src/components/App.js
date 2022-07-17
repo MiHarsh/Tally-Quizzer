@@ -2,7 +2,7 @@ import React from "react";
 import Register from "./Register";
 import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -11,13 +11,11 @@ import UpdateProfile from "./UpdateProfile";
 import CreateQuiz from "./CreateQuiz";
 import Home from "./Home";
 import StudentLogin from "./StudentLogin";
-import { Quizes } from "./Quizes";
 import QuizTaker from "./QuizTaker/QuizTaker";
 import ParticipantLogin from "./Participant";
 import { Quizes } from "./Quizes";
 import Scorecard from "./Scorecard";
 import ParticipantList from "./AddParticipant/ParticipantList";
-import Featurespage from "./Features/Featurespage";
 
 function App() {
   return (
@@ -53,7 +51,6 @@ function App() {
               path="/addparticipant"
               component={ParticipantList}
             />
-            <PublicRoute exact path="/features" component={Featurespage} />
           </Switch>
         </AuthProvider>
       </Router>
