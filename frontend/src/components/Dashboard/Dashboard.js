@@ -1,13 +1,14 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import "./Dashboard.css";
+import uniqid from "uniqid";
 
 export default function Dashboard() {
   return (
     <Container>
       <div className="split left">
         <div className="centered">
-          <a href="/createquiz">
+          <a href={"/createquiz?quizID=" + uniqid()}>
             <button className="button button1">Create Quiz</button>
           </a>
           <h2 style={{ color: "aqua" }}>Click here for generating quiz</h2>

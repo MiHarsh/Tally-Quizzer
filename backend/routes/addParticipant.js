@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
             });
           res.json({ success: "successfully saved" });
         } else {
-          res.json({ error: "unauthorized" });
+          res.json({ error: "unauthorized or no data found" });
         }
       },
       (errorObject) => {
