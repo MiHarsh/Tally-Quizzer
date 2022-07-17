@@ -1,11 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import NotifyCard from "./NotifyCard";
+
+const notif = [
+  {
+    title: "Quiz is Yet to Begin !!",
+    body: "Please Login Within The Quiz Time Duration.",
+  },
+  {
+    title: "Quiz has Ended !!",
+    body: "This Quiz has already ended. Please Contact your Admin for More Information.",
+  },
+  {
+    title: "Thank You !!",
+    body: "Your quiz has been submitted successfully. Click on the Home button to proceed to the homepage",
+  },
+  {
+    title: "Error 404 !!",
+    body: "Some error occured",
+  },
+  {
+    title: "Unauthorized !!",
+    body: "Please check your credentials",
+  },
+  {
+    title: "You have already responded !!",
+    body: "If you think there is some issue, kindly contact quiz master",
+  },
+];
 
 function Quiz({ email }) {
   const [ques, setQuestions] = useState([]);
   const [ans, setAnswers] = useState({});
 
-  const history = useHistory();
+  const [code, setCode] = useState(-1);
 
   useEffect(
     () => {
@@ -24,24 +51,28 @@ function Quiz({ email }) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          let sortedD = Object.entries(data).sort(function (a, b) {
-            return Math.random() - 0.5;
-          });
-          setQuestions(sortedD);
-          setCount4(sortedD.length);
-          setCount3(sortedD.length - 1);
+          setCode(data.code);
+          if (data.code === -1) {
+            // data retrieved successfully
+            let sortedD = Object.entries(data.question).sort(function (a, b) {
+              return Math.random() - 0.5;
+            });
+            setQuestions(sortedD);
+            setCount4(sortedD.length);
+            setCount3(sortedD.length - 1);
 
-          let c = {};
-          for (var i = 0; i < sortedD.length; i++) {
-            c[sortedD[i][0]] = {
-              opt1: false,
-              opt2: false,
-              opt3: false,
-              opt4: false,
-              attempted: false,
-            };
+            let c = {};
+            for (var i = 0; i < sortedD.length; i++) {
+              c[sortedD[i][0]] = {
+                opt1: false,
+                opt2: false,
+                opt3: false,
+                opt4: false,
+                attempted: false,
+              };
+            }
+            setAnswers(c);
           }
-          setAnswers(c);
         })
         .catch((err) => console.log(err));
     },
@@ -65,6 +96,7 @@ function Quiz({ email }) {
       .catch((err) => {
         console.log(err);
       });
+    setCode(2);
   };
 
   const handleChange = (e) => {
@@ -157,10 +189,10 @@ function Quiz({ email }) {
       setCount4(0);
     }
   }
-
+  // ques.length > 0 && Object.keys(ans).length > 0
   return (
     <div>
-      {ques.length > 0 && Object.keys(ans).length > 0 ? (
+      {code === -1 && ques.length > 0 && Object.keys(ans).length > 0 ? (
         <>
           {" "}
           <div className="question-box">
@@ -319,7 +351,12 @@ function Quiz({ email }) {
                           ? "grey"
                           : "#EAEAEA",
                     }}
-                    onClick={() => [setCurrentQuestion(index)]}
+                    onClick={() => [
+                      setCurrentQuestion(index),
+
+                      DIncrease(),
+                      DIncrease1(),
+                    ]}
                   >
                     {index + 1}
                   </div>
@@ -328,9 +365,9 @@ function Quiz({ email }) {
             </div>
           </div>{" "}
         </>
-      ) : (
-        <div>loading</div>
-      )}
+      ) : code !== -1 ? (
+        <NotifyCard title={notif[code].title} body={notif[code].body} />
+      ) : null}
     </div>
   );
 }

@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
             .get("db")
             .ref("quizTakers/" + req.body.quizID + "/" + token)
             .update({
-              score: 0,
+              score: -1,
               answers: "abcd",
               emailID: req.body.emailID,
               name: req.body.name,
