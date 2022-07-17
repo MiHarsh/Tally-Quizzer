@@ -5,6 +5,7 @@ import Img1 from "../../components/images/create.jpg";
 import Img2 from "../../components/images/analytics.jpg";
 import Button from "../scoreUtils/controls/Button";
 import { useHistory } from "react-router-dom";
+import uniqid from "uniqid";
 
 export default function Dashboard() {
   const history = useHistory();
@@ -15,7 +16,9 @@ export default function Dashboard() {
         <div className="centered" >
         <img src={Img1} style={{ Width:'500px',Height:"90vh"}} />
         <br />
-          <Button text="Create Quiz " onClick={(e) => history.push("/createquiz")}></Button>
+          <Button text="Create Quiz " onClick={(e) => {
+                    history.push("/createQuiz?quizID=" + uniqid());
+                  }}></Button>
         </div>
       </div>
 

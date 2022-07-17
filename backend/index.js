@@ -48,6 +48,7 @@ app.use("/api/saveResponse", require("./routes/saveUserResponse"));
 app.use("/api/addParticipants", require("./routes/addParticipant"));
 app.use("/api/getParticipants", require("./routes/getParticipant"));
 app.use("/api/saveMetaData", require("./routes/saveMetaData"));
+app.use("/api/getQuizzes", require("./routes/getQuizzes"));
 
 // serve static assets if we are in production
 if (process.env.NODE_ENV === "production") {

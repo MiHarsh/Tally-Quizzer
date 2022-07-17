@@ -13,7 +13,7 @@ import Home from "./Home";
 import TakeQuiz from "./QuizTaker/TakeQuiz";
 import QuizTaker from "./QuizTaker/QuizTaker";
 import ParticipantLogin from "./Participant";
-import { Quizes } from "./Quizes";
+import { Quizes } from "./QuizHistory/Quizes";
 import Scorecard from "./Scorecard";
 import ParticipantList from "./AddParticipant/ParticipantList";
 
