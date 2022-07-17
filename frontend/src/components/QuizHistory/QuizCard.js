@@ -1,8 +1,27 @@
 import React from "react";
 
-import { Container, Row, Col, Button } from "react-bootstrap";
+import Button from "../scoreUtils/controls/Button";
+import { useHistory } from "react-router-dom";
+import { database } from "../../firebase";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function QuizCard({ quizName, startTime, endTime, quizID }) {
+  const { currentUser } = useAuth();
+
+  const history = useHistory();
+
+  const handleTerminate = () => {
+    database
+      .ref(
+        "quizMaster/" +
+          currentUser.email.replace(".", "") +
+          "/" +
+          quizID +
+          "/metadata/endTime"
+      )
+      .set(Date.now());
+  };
+
   return (
     <div className="result mx-auto py-3 px-3 mt-2">
       <div className="row d-flex justify-content-center py-2 block-example border-bottom border-dark paper mb-1">
@@ -28,20 +47,43 @@ export default function QuizCard({ quizName, startTime, endTime, quizID }) {
 
       {Date.now() < endTime ? (
         <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
-          <Button className="btn btn-primary mx-5">Edit Time</Button>
-          <Button className="btn btn-danger mx-5">Terminate</Button>
-          <a href={"/addparticipant?quizID=" + quizID}>
-            <Button className="btn btn-info mx-5">View Participant</Button>
-          </a>
+          <Button
+            text="Terminate"
+            color="secondary"
+            onClick={handleTerminate}
+          />
+          <Button
+            text="View Participants"
+            color="info"
+            onClick={(e) => {
+              history.push("/addparticipant?quizID=" + quizID);
+            }}
+          ></Button>
+          <Button
+            text="Edit Quiz"
+            color="info"
+            onClick={(e) => {
+              history.push("/createQuiz?quizID=" + quizID);
+            }}
+          ></Button>
         </div>
       ) : (
         <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
-          <a href={"/addparticipant?quizID=" + quizID}>
-            <Button className="btn btn-info mx-5">View Participant</Button>
-          </a>
-          <a href={"/scorecard?quizID=" + quizID}>
-            <Button className="btn btn-secondary mx-5">See Results</Button>
-          </a>
+          <Button
+            text="View Participants"
+            color="info"
+            onClick={(e) => {
+              history.push("/addparticipant?quizID=" + quizID);
+            }}
+          ></Button>
+
+          <Button
+            text="See Results"
+            color="secondary"
+            onClick={(e) => {
+              history.push("/scorecard?quizID=" + quizID);
+            }}
+          ></Button>
         </div>
       )}
     </div>

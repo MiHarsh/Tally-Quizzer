@@ -15,7 +15,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
     opt2: "",
     opt3: "",
     opt4: "",
-    mmarks: 0,
+    mmarks: 4,
   });
 
   const [correct, setCorrect] = useState({
@@ -24,7 +24,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
     opt3: false,
     opt4: false,
     totalCorrect: 0,
-    mmarks: 0,
+    mmarks: 4,
   });
 
   // handle change event
@@ -37,6 +37,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
   };
 
   const saveToDB = () => {
+    console.log(tmp);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -44,7 +45,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
         question: tmp,
         answer: correct,
         currentUser: currentUser.email.replace(".", ""),
-        quizID: new URLSearchParams(window.location.search).get("quesID"),
+        quizID: new URLSearchParams(window.location.search).get("quizID"),
       }),
     };
     fetch("/api/saveQues", requestOptions)

@@ -11,7 +11,11 @@ export default function CreateQuiz() {
   const { currentUser } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
   const [quesList, setQuesList] = useState({});
-  const [metaData, setMetaData] = useState({});
+  const [metaData, setMetaData] = useState({
+    QuizName: "",
+    endTime: Date.now(),
+    startTime: Date.now(),
+  });
 
   console.log(metaData);
   useEffect(() => {
@@ -26,7 +30,10 @@ export default function CreateQuiz() {
     };
     fetch("/api/getQues", requestOptions)
       .then((response) => response.json())
-      .then((data) => setQuesList(data));
+      .then((data) => {
+        setMetaData(data.metadata);
+        setQuesList(data.questions);
+      });
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
@@ -66,14 +73,23 @@ export default function CreateQuiz() {
                   QuizName: e.target.value,
                 });
               }}
+              value={metaData.QuizName}
             />
           </InputGroup>
 
           <p>Start Date and Time</p>
-          <DateTime name="startTime" setMetaData={setMetaData} />
+          <DateTime
+            name="startTime"
+            setMetaData={setMetaData}
+            val={metaData.startTime}
+          />
           <br />
           <p>End Date and Time</p>
-          <DateTime name="endTime" setMetaData={setMetaData} />
+          <DateTime
+            name="endTime"
+            setMetaData={setMetaData}
+            val={metaData.endTime}
+          />
           <br />
           <div className="row ml-1 d-flex justify-content-center ">
             <Form.Group controlId="formFileMultiple" className="mb-3">
@@ -122,7 +138,7 @@ export default function CreateQuiz() {
           )}
         </div>
         <div className="col-8  pt-4 ml-auto mr-2 ">
-          {quesList ? (
+          {Object.keys(quesList).length > 0 ? (
             Object.keys(quesList).map((key, idx) => {
               let { question, opt1, opt2, opt3, opt4 } = quesList[key];
 

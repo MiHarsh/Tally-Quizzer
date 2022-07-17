@@ -5,6 +5,11 @@ const router = express.Router();
 const calculateScore = (original, answered) => {
   let score = 0;
   let updatedAns = answered;
+  let totalScore = 0;
+
+  for (let key in original) {
+    totalScore += original[key].mmarks;
+  }
 
   for (let key in answered) {
     let ccount = 0;
@@ -59,13 +64,15 @@ const calculateScore = (original, answered) => {
     ) {
       score += parseInt(original[key].mmarks);
     } else {
-      score += (4 * ccount) / parseInt(original[key].mmarks);
+      if (original[key].mmarks !== 0) {
+        score += (4 * ccount) / parseInt(original[key].mmarks);
+      }
     }
 
     updatedAns[key]["isCorrect"] = true;
   }
 
-  return { score: score, ans: updatedAns };
+  return { score: score, totalScore: totalScore, ans: updatedAns };
 };
 
 router.post("/", (req, res) => {
@@ -90,19 +97,26 @@ router.post("/", (req, res) => {
         const creator = val.creator;
         req.app
           .get("db")
-          .ref("quizMaster/" + creator + "/" + req.body.quizID + "/answers")
+          .ref("quizMaster/" + creator + "/" + req.body.quizID)
           .once(
             "value",
             (snapshot) => {
-              const answers = snapshot.val();
-              let { score, ans } = calculateScore(answers, req.body.answers);
-              req.app
-                .get("db")
-                .ref("quizTakers/" + req.body.quizID + "/" + req.body.tokenID)
-                .update({
-                  score: score,
-                  answers: ans,
-                });
+              const data = snapshot.val();
+              const answers = data.answers;
+              let { score, ans, totalScore } = calculateScore(
+                answers,
+                req.body.answers
+              );
+              if (Date.now() <= data.metadata.endTime) {
+                req.app
+                  .get("db")
+                  .ref("quizTakers/" + req.body.quizID + "/" + req.body.tokenID)
+                  .update({
+                    score: score,
+                    answers: ans,
+                    totalScore: totalScore,
+                  });
+              }
             },
             (errorObject) => {
               res.json({ error: "The read failed: " + errorObject.name });

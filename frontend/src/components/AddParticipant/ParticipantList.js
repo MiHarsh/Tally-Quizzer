@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import EmployeeForm from "./EmployeeForm";
 import PageHeader from "../../components/scoreUtils/PageHeader";
-// import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import {
   Paper,
   makeStyles,
@@ -12,7 +10,6 @@ import {
   InputAdornment,
 } from "@material-ui/core";
 import useTable from "../../components/scoreUtils/useTable";
-import * as employeeService from "../../components/employeservice";
 import Controls from "../../components/scoreUtils/controls/Controls";
 import { Search } from "@material-ui/icons";
 import ParticipantForm from "./ParticipantForm";

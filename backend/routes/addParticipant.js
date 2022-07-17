@@ -28,6 +28,7 @@ router.post("/", (req, res) => {
               answers: "abcd",
               emailID: req.body.emailID,
               name: req.body.name,
+              totalScore: 0,
             });
           res.json({ success: "successfully saved" });
         } else {

@@ -7,6 +7,24 @@ export default function ParticipantForm({ setUser }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleEmail = () => {
+    // saveUserTODB
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        creator: currentUser.email.replace(".", ""),
+        quizID: new URLSearchParams(window.location.search).get("quizID"),
+      }),
+    };
+    fetch("/api/mailParticipants", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const handleClick = () => {
     setUser((prev) => {
       return [...prev, { email: email, name: name }];
@@ -65,6 +83,14 @@ export default function ParticipantForm({ setUser }) {
           onClick={handleClick}
         >
           Add Participant
+        </Button>
+        <Button
+          className="mx-auto "
+          variant="primary"
+          size="sm"
+          onClick={handleEmail}
+        >
+          Email Participant
         </Button>
       </div>
     </Container>

@@ -366,7 +366,11 @@ function Quiz({ email }) {
           </div>{" "}
         </>
       ) : code !== -1 ? (
-        <NotifyCard title={notif[code].title} body={notif[code].body} />
+        <NotifyCard
+          title={notif[code].title}
+          body={notif[code].body}
+          code={code}
+        />
       ) : null}
     </div>
   );
