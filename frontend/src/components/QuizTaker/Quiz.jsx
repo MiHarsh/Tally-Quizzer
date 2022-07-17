@@ -1,47 +1,54 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-function Quiz() {
+function Quiz({ email }) {
   const [ques, setQuestions] = useState([]);
   const [ans, setAnswers] = useState({});
 
-  useEffect(() => {
-    // POST request using fetch inside useEffect React hook
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        emailID: "pqrs",
-        quizID: new URLSearchParams(window.location.search).get("quizID"),
-        tokenID: new URLSearchParams(window.location.search).get("tokenID"),
-      }),
-    };
-    fetch("/api/getQuesWithLogin", requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        let sortedD = Object.entries(data).sort(function (a, b) {
-          return Math.random() - 0.5;
-        });
-        setQuestions(sortedD);
-        setCount4(sortedD.length);
-        setCount3(sortedD.length - 1);
+  const history = useHistory();
 
-        let c = {};
-        for (var i = 0; i < sortedD.length; i++) {
-          c[sortedD[i][0]] = {
-            opt1: false,
-            opt2: false,
-            opt3: false,
-            opt4: false,
-            attempted: false,
-          };
-        }
-        setAnswers(c);
-      })
-      .catch((err) => console.log(err));
+  useEffect(
+    () => {
+      // POST request using fetch inside useEffect React hook
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          emailID: email,
+          quizID: new URLSearchParams(window.location.search).get("quizID"),
+          tokenID: new URLSearchParams(window.location.search).get("tokenID"),
+        }),
+      };
+      fetch("/api/getQuesWithLogin", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          let sortedD = Object.entries(data).sort(function (a, b) {
+            return Math.random() - 0.5;
+          });
+          setQuestions(sortedD);
+          setCount4(sortedD.length);
+          setCount3(sortedD.length - 1);
+
+          let c = {};
+          for (var i = 0; i < sortedD.length; i++) {
+            c[sortedD[i][0]] = {
+              opt1: false,
+              opt2: false,
+              opt3: false,
+              opt4: false,
+              attempted: false,
+            };
+          }
+          setAnswers(c);
+        })
+        .catch((err) => console.log(err));
+    },
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
+    []
+  );
 
   const saveResponse = () => {
     const requestOptions = {
