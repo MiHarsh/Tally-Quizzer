@@ -22,37 +22,37 @@ export default function NavigationBar() {
   }
   return (
     <>
-      <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="#">Quizzer</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
+      <Navbar style={{backgroundColor:"#160469"}}>
+        <Navbar.Brand href="#"  style={{color:"#9d96ff"}}>Quizzer</Navbar.Brand>
+        <Nav className="mr-auto" >
+          <Nav.Link href="/" style={{color:"#ffffff"}}>Home</Nav.Link >
 
-          <Nav.Link href="/takequiz">Take Quiz</Nav.Link>
+          <Nav.Link href="/takequiz" style={{color:"#ffffff"}}>Take Quiz</Nav.Link>
 
           {currentUser && (
             <>
-              <Nav.Link href={"/createquiz?quizID=" + uniqid()}>
+              <Nav.Link href={"/createquiz?quizID=" + uniqid()} style={{color:"#ffffff"}}>
                 Create Quiz
               </Nav.Link>
-              <Nav.Link href="/quizes">Quizes</Nav.Link>
-              <Nav.Link href="/scorecard">Score</Nav.Link>
+              <Nav.Link href="/quizes" style={{color:"#ffffff"}}>Quizes</Nav.Link>
+              <Nav.Link href="/scorecard" style={{color:"#ffffff"}}>Score</Nav.Link>
               {/* <Nav.Link href="/addparticipant"> Participant</Nav.Link> */}
-              <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+              <Nav.Link href="/dashboard" style={{color:"#ffffff"}}>Dashboard</Nav.Link>
             </>
           )}
         </Nav>
         <Nav className="ml-auto">
           {currentUser ? (
             <>
-              <Nav.Link href="/update-profile">Update Profile</Nav.Link>
-              <Nav.Link href="#" onClick={handleLogout}>
+              <Nav.Link href="/update-profile" style={{color:"#ffffff"}}>Update Profile</Nav.Link>
+              <Nav.Link href="#" onClick={handleLogout} style={{color:"#ffffff"}}>
                 Logout
               </Nav.Link>
             </>
           ) : (
             <>
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/register">Register</Nav.Link>
+              <Nav.Link href="/login" style={{color:"#ffffff"}}>Login</Nav.Link>
+              <Nav.Link href="/register" style={{color:"#ffffff"}}>Register</Nav.Link>
             </>
           )}
         </Nav>

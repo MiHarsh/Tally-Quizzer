@@ -17,13 +17,11 @@ export default function Home() {
           <Row>
             <Col>
             <Card className="mt-5 mx-auto pb-5 pt-5"style={{boxShadow: '1px 2px 9px #5621f4',width: '30vw',height: '60vh',fontFamily:"QuickSand",backgroundColor: '#4f4fff14 ',}} >
-      
               <Card.Body >
-              
                 <Card.Title className="text-left" ><h1>Quizzing </h1></Card.Title>
-                <Card.Text className="text-left">
-                  <h3>made Easy !!</h3>
-                  Taking a quiz is fun and engaging. And creating one should be too.
+                <Card.Text className="text-left pl-4" >
+                  <h2>Made Easy !!</h2>
+                  <h4>Taking a quiz is fun and engaging. And creating one should be too.</h4>
                 </Card.Text>
                 
               </Card.Body>
