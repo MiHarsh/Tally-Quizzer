@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/scoreUtils/PageHeader";
+import * as XLSX from "xlsx";
+import Button from "../scoreUtils/controls/Button";
 import {
   Paper,
   makeStyles,
@@ -24,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   searchInput: {
     width: "75%",
   },
+  tableHead: {
+    backgroundColor: '#003cff24',
+  },
 }));
 
 const headCells = [
@@ -45,6 +50,19 @@ export default function ParticipantList() {
   const [userData, setUserData] = useState([]);
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
     useTable(userData, headCells, filterFn);
+
+  const downloadExcel = () => {
+    const quizID = new URLSearchParams(window.location.search).get("quizID");
+    const workSheet = XLSX.utils.json_to_sheet(userData);
+    const workBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workBook, workSheet, "Participants");
+    //Buffer
+    let buf = XLSX.write(workBook, { bookType: "xlsx", type: "buffer" });
+    //Binary string
+    XLSX.write(workBook, { bookType: "xlsx", type: "binary" });
+    //Download;
+    XLSX.writeFile(workBook, "ParticipantsList_quizID-" + quizID + ".xlsx");
+  };
 
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
@@ -89,7 +107,7 @@ export default function ParticipantList() {
     <>
       <br />
       <h5 className="ml-5">Participant List</h5>
-      <ParticipantForm setUser={setUserData} />
+      <ParticipantForm setUser={setUserData} user={userData} />
       <Paper>
         <Toolbar className={classes.pageContent}>
           <Controls.Input
@@ -104,9 +122,14 @@ export default function ParticipantList() {
             }}
             onChange={handleSearch}
           />
+          <Button
+            text="Export"
+            className="ml-5"
+            onClick={downloadExcel}
+          ></Button>
         </Toolbar>
         <TblContainer>
-          <TblHead />
+          <TblHead className={classes.tableHead} />
           <TableBody>
             {recordsAfterPagingAndSorting().map((item) => (
               <TableRow key={item.id}>

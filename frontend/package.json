@@ -22,7 +22,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "recharts": "^2.1.9",
-    "uniqid": "^5.4.0"
+    "save": "^2.5.0",
+    "uniqid": "^5.4.0",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "env-cmd react-scripts start",

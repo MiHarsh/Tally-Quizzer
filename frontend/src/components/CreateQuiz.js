@@ -17,7 +17,6 @@ export default function CreateQuiz() {
     startTime: Date.now(),
   });
 
-  console.log(metaData);
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
@@ -31,8 +30,13 @@ export default function CreateQuiz() {
     fetch("/api/getQues", requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setMetaData(data.metadata);
-        setQuesList(data.questions);
+        if (data.metadata) {
+          setMetaData(data.metadata);
+        }
+
+        if (data.questions) {
+          setQuesList(data.questions);
+        }
       });
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
@@ -146,11 +150,13 @@ export default function CreateQuiz() {
                 <QuestionDetails
                   key={idx}
                   index={idx}
+                  questionID={key}
                   question={question}
                   opt1={opt1}
                   opt2={opt2}
                   opt3={opt3}
                   opt4={opt4}
+                  setQuesList={setQuesList}
                 />
               );
             })

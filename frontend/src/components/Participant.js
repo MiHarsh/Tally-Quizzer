@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "./scoreUtils/PageHeader";
 import { useAuth } from "../contexts/AuthContext";
+import * as XLSX from "xlsx";
+import Button from "./scoreUtils/controls/Button";
 
 import {
   Paper,
@@ -54,6 +56,19 @@ export default function ParticipantLogin() {
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
     useTable(userData, headCells, filterFn);
 
+  const downloadExcel = () => {
+    const quizID = new URLSearchParams(window.location.search).get("quizID");
+    const workSheet = XLSX.utils.json_to_sheet(userData);
+    const workBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workBook, workSheet, "Participants");
+    //Buffer
+    let buf = XLSX.write(workBook, { bookType: "xlsx", type: "buffer" });
+    //Binary string
+    XLSX.write(workBook, { bookType: "xlsx", type: "binary" });
+    //Download;
+    XLSX.writeFile(workBook, "ScoreCard_quizID-" + quizID + ".xlsx");
+  };
+
   useEffect(() => {
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
@@ -70,6 +85,7 @@ export default function ParticipantLogin() {
         let pl = [];
         for (let key in data) {
           if (typeof data[key] === "object") {
+            delete data[key].answers;
             if (data[key].score === -1) {
               data[key].score = "NA";
               data[key].totalScore = "NA";
@@ -114,6 +130,11 @@ export default function ParticipantLogin() {
             }}
             onChange={handleSearch}
           />
+          <Button
+            text="Export"
+            className="ml-5"
+            onClick={downloadExcel}
+          ></Button>
         </Toolbar>
         <TblContainer>
           <TblHead />

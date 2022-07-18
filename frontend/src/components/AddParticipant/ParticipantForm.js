@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Container, InputGroup, Form, Button } from "react-bootstrap";
+import { Container, InputGroup, Form } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 
-export default function ParticipantForm({ setUser }) {
+import Button from "../scoreUtils/controls/Button";
+
+export default function ParticipantForm({ setUser, user }) {
   const { currentUser } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,7 +28,17 @@ export default function ParticipantForm({ setUser }) {
   };
 
   const handleClick = () => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    const isFound = user.some((element) => {
+      if (element.email === email) {
+        return true;
+      }
+
+      return false;
+    });
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
+      !isFound
+    ) {
       setUser((prev) => {
         return [...prev, { email: email, name: name }];
       });
@@ -80,20 +92,17 @@ export default function ParticipantForm({ setUser }) {
 
         <Button
           className="mx-auto "
-          variant="primary"
           size="sm"
           onClick={handleClick}
-        >
-          Add Participant
-        </Button>
+          text="Add Participant"
+        />
+
         <Button
           className="mx-auto "
-          variant="primary"
           size="sm"
           onClick={handleEmail}
-        >
-          Email Participant
-        </Button>
+          text="Email Participants"
+        />
       </div>
     </Container>
   );

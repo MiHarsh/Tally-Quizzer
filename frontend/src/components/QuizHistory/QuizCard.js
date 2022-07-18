@@ -5,12 +5,19 @@ import { useHistory } from "react-router-dom";
 import { database } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
 
-export default function QuizCard({ quizName, startTime, endTime, quizID }) {
+export default function QuizCard({
+  quizName,
+  startTime,
+  endTime,
+  quizID,
+  setPrev,
+}) {
   const { currentUser } = useAuth();
 
   const history = useHistory();
 
   const handleTerminate = () => {
+    let timeNow = Date.now();
     database
       .ref(
         "quizMaster/" +
@@ -19,7 +26,15 @@ export default function QuizCard({ quizName, startTime, endTime, quizID }) {
           quizID +
           "/metadata/endTime"
       )
-      .set(Date.now());
+      .set(timeNow);
+    setPrev((prev) => {
+      let updatedData = prev[quizID];
+      updatedData.metadata.endTime = timeNow;
+      return {
+        ...prev,
+        [prev[quizID]]: updatedData,
+      };
+    });
   };
 
   return (
@@ -45,47 +60,36 @@ export default function QuizCard({ quizName, startTime, endTime, quizID }) {
         </div>
       </div>
 
-      {Date.now() < endTime ? (
-        <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
+      <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
+        {Date.now() < endTime ? (
           <Button
             text="Terminate"
             color="secondary"
             onClick={handleTerminate}
           />
-          <Button
-            text="View Participants"
-            color="info"
-            onClick={(e) => {
-              history.push("/addparticipant?quizID=" + quizID);
-            }}
-          ></Button>
-          <Button
-            text="Edit Quiz"
-            color="info"
-            onClick={(e) => {
-              history.push("/createQuiz?quizID=" + quizID);
-            }}
-          ></Button>
-        </div>
-      ) : (
-        <div className="row d-flex justify-content-center space-between border-top border-dark paper pt-2">
-          <Button
-            text="View Participants"
-            color="info"
-            onClick={(e) => {
-              history.push("/addparticipant?quizID=" + quizID);
-            }}
-          ></Button>
-
-          <Button
-            text="See Results"
-            color="secondary"
-            onClick={(e) => {
-              history.push("/scorecard?quizID=" + quizID);
-            }}
-          ></Button>
-        </div>
-      )}
+        ) : null}
+        <Button
+          text="View Participants"
+          color="info"
+          onClick={(e) => {
+            history.push("/addparticipant?quizID=" + quizID);
+          }}
+        ></Button>
+        <Button
+          text="Edit Quiz"
+          color="info"
+          onClick={(e) => {
+            history.push("/createQuiz?quizID=" + quizID);
+          }}
+        ></Button>
+        <Button
+          text="See Results"
+          color="secondary"
+          onClick={(e) => {
+            history.push("/scorecard?quizID=" + quizID);
+          }}
+        ></Button>
+      </div>
     </div>
   );
 }
