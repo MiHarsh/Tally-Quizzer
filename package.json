@@ -7,8 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pre-install": "npm install -g nodemon concurrently",
     "backend-node": "cd backend && nodemon index.js",
+    "backend-node-with-install": "cd backend && npm install && nodemon index.js",
+    "frontend-with-install": "cd frontend && npm install && npm start",
     "frontend": "cd frontend && npm start ",
-    "start": "concurrently \"npm run backend-node\" \"npm run frontend\""
+    "start": "concurrently \"npm run backend-node\" \"npm run frontend\"",
+    "start-with-install": "concurrently \"npm run backend-node-with-install\" \"npm run frontend-with-install\""
   },
   "repository": {
     "type": "git",
