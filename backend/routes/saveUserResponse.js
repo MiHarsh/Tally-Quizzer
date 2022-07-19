@@ -8,6 +8,9 @@ const calculateScore = (original, answered) => {
   let totalScore = 0;
 
   for (let key in original) {
+    if (typeof original[key].mmarks === "string") {
+      original[key].mmarks = parseInt(original[key].mmarks);
+    }
     totalScore += original[key].mmarks;
   }
 

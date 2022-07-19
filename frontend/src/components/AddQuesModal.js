@@ -172,6 +172,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
               </Form.Label>
               <Form.Control
                 placeholder={0}
+                type="number"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 style={{ maxWidth: "60px" }}
