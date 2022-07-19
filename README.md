@@ -135,8 +135,14 @@ Run `cd backend` to go inside the Node.js server folder for Linux.
 
 # Gallery
 
-| | | |
-|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604" alt="Join meeting instantly" src="https://imgur.com/w21XfmI.jpg">  Join Meeting |  <img width="1604" alt="sign in" src="https://imgur.com/KOR7i0Y.jpg"> Login/SignUp |<img width="1604" alt="Homepage" src="https://i.imgur.com/TmY0Fp9.jpg"> Homepage|
-|<img width="1604" alt="Chatroom" src="https://imgur.com/3gRTIfX.jpg"> Chatroom |  <img width="1604" alt="schedule a new meet" src="https://imgur.com/xVNyZYg.jpg">Schedule a meet|<img width="1604" alt="Join a meet" src="https://imgur.com/bTFKBfC.jpg"> Join a meet|
-|<img width="1604" alt="Calender Widget" src="https://imgur.com/gZhdmkX.jpg"> Calender Widget |  <img width="1604" alt="themes settings" src="https://imgur.com/RL7dWFj.jpg"> Settings Page|<img width="1604" alt="meet-UI" src="https://imgur.com/WLmc6VW.jpg"> Meet UI|
+|||
+|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="login" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/login.png">  Login Page |  <img width="1604" alt="register" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/register.png"> Register |
+|<img width="1604" alt="Homepage" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/home.png"> Homepage|<img width="1604" alt="dashboard" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/dashboard.png"> Dashboard |
+ <img width="1604" alt="create new quiz" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/create-quiz.png">Create/Edit a Quiz|<img width="1604" alt="view-quiz-History" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/quiz-history.png"> View Quiz History|
+|<img width="1604" alt="View-participants" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/view-participants.png"> Add/View Participants |  <img width="1604" alt="view statistics" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/view-stats.png"> Statistics Page|
+<img width="1604" alt="view-score-card" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/score-card.png"> View Score Card| <img width="1604" alt="mail test link" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/quizmail.png"> Mail Test Link|
+
+# Database Schema
+
+<img width="1604" alt="db-schema" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/schema.png">
