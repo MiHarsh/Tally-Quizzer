@@ -152,8 +152,23 @@ upstream	git@github.com:MiHarsh/Tally-Quizzer.git (push)
 ```
 ## 
 
+### Method 1 (recommended): Using Docker
 
-### Method 1
+#### Pre-requisites
+
+1. Install `Docker` by looking up the [docs](https://docs.docker.com/get-docker/)
+2. Install `Docker Compose` by looking up the [docs](https://docs.docker.com/compose/install/)
+
+#### Steps
+
+1. Make sure you are inside the root of the project (i.e., `./Tally-Quizzer/` folder).
+2. Setup environment variables in `.env` files of all folders according to `.env.sample` files.
+3. Run `docker-compose up` to spin up the containers.
+4. The website would then be available locally at `http://localhost:3000/`.
+5. The above command could be run in detached mode with `-d` flag as `docker-compose up -d`.
+6. For help, run the command `docker-compose -h`.
+
+### Method 2
 
 #### Pre-requisites
 
@@ -167,7 +182,7 @@ upstream	git@github.com:MiHarsh/Tally-Quizzer.git (push)
 4. The website would then be available locally at `http://localhost:3000/`.
 5. If you have already installed the dependencies, you can also run `npm run start` to run the frontend and backend concurrently.
 
-### Method 2 : Setup services independently
+### Method 3 : Setup services independently
 
 #### Pre-requisites
 1. Download and Install [Nodejs](https://nodejs.org/en/download)
