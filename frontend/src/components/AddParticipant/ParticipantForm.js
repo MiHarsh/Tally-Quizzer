@@ -19,7 +19,7 @@ export default function ParticipantForm({ setUser, user }) {
         quizID: new URLSearchParams(window.location.search).get("quizID"),
       }),
     };
-    fetch("/api/mailParticipants", requestOptions)
+    fetch("http://localhost:5000/api/mailParticipants", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => {
@@ -56,7 +56,7 @@ export default function ParticipantForm({ setUser, user }) {
           quizID: new URLSearchParams(window.location.search).get("quizID"),
         }),
       };
-      fetch("/api/addParticipants", requestOptions)
+      fetch("http://localhost:5000/api/addParticipants", requestOptions)
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => {

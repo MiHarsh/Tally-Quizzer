@@ -197,6 +197,8 @@ Run `cd backend` to go inside the Node.js server folder for Linux.
  <img width="1604" alt="create new quiz" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/create-quiz.png">Create/Edit a Quiz|<img width="1604" alt="view-quiz-History" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/quiz-history.png"> View Quiz History|
 |<img width="1604" alt="View-participants" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/view-participants.png"> Add/View Participants |  <img width="1604" alt="view statistics" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/view-stats.png"> Statistics Page|
 <img width="1604" alt="view-score-card" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/score-card.png"> View Score Card| <img width="1604" alt="mail test link" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/quizmail.png"> Mail Test Link|
+<img width="1604" alt="view-instructions-page" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/instructions-page.png"> Instructions Page| <img width="1604" alt="instant score release" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/instant-score-release.png"> Instant Score Release|
+<img width="1604" alt="quizzing-window" src="https://raw.githubusercontent.com/MiHarsh/Tally-Quizzer/main/images/quizzing-window.png"> Quizzing Window| 
 
 # Database Schema
 

@@ -47,7 +47,7 @@ function Quiz({ email }) {
           tokenID: new URLSearchParams(window.location.search).get("tokenID"),
         }),
       };
-      fetch("/api/getQuesWithLogin", requestOptions)
+      fetch("http://localhost:5000/api/getQuesWithLogin", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -91,7 +91,7 @@ function Quiz({ email }) {
         answers: ans,
       }),
     };
-    fetch("/api/saveResponse", requestOptions)
+    fetch("http://localhost:5000/api/saveResponse", requestOptions)
       .then((response) => response.json())
       .catch((err) => {
         console.log(err);

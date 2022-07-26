@@ -74,7 +74,7 @@ export default function ParticipantList() {
         quizID: new URLSearchParams(window.location.search).get("quizID"),
       }),
     };
-    fetch("/api/getParticipants", requestOptions)
+    fetch("http://localhost:5000/api/getParticipants", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         let pl = [];

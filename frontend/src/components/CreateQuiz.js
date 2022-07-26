@@ -27,7 +27,7 @@ export default function CreateQuiz() {
         quizID: new URLSearchParams(window.location.search).get("quizID"),
       }),
     };
-    fetch("/api/getQues", requestOptions)
+    fetch("http://localhost:5000/api/getQues", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.metadata) {
@@ -53,7 +53,7 @@ export default function CreateQuiz() {
         metadata: metaData,
       }),
     };
-    fetch("/api/saveMetaData", requestOptions)
+    fetch("http://localhost:5000/api/saveMetaData", requestOptions)
       .then((response) => response.json())
       .then((data) => console.log(data));
   };

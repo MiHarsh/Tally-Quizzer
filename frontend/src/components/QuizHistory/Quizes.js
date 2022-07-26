@@ -19,7 +19,7 @@ export const Quizes = () => {
         creator: currentUser.email.replace(".", ""),
       }),
     };
-    fetch("/api/getQuizzes", requestOptions)
+    fetch("http://localhost:5000/api/getQuizzes", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setPrev(data);

@@ -2,7 +2,6 @@
   "name": "firebase-react-auth",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -27,7 +26,7 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "env-cmd react-scripts start",
+    "start": "env-cmd react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

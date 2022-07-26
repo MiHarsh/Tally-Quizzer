@@ -48,7 +48,7 @@ function AddQuesModal({ setOpenModal, quesList, setQuestion }) {
         quizID: new URLSearchParams(window.location.search).get("quizID"),
       }),
     };
-    fetch("/api/saveQues", requestOptions)
+    fetch("http://localhost:5000/api/saveQues", requestOptions)
       .then((response) => response.json())
       .then((data) =>
         setQuestion({
