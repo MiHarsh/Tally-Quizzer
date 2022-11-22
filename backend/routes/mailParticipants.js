@@ -4,17 +4,14 @@ const router = express.Router();
 
 const nodemailer = require("nodemailer");
 
-const transport = nodemailer.createTransport({
+let transport = nodemailer.createTransport({
   service: "gmail",
+  host: "smtp.gmail.com",
   auth: {
-    type: "OAuth2",
     user: process.env.EMAIL_ID,
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_KEY,
-    accessToken: process.env.ACCESS_TOKEN,
+    pass: process.env.EMAIL_PASSCODE,
   },
 });
-
 router.post("/", (req, res) => {
   req.app
     .get("db")
