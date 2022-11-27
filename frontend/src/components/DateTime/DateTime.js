@@ -1,7 +1,6 @@
 import "./DateTime.css";
 import React from "react";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
-
 export default function DateTime({ name, val, setMetaData }) {
   return (
     <>

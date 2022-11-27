@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NotifyCard from "./NotifyCard";
-
+import Countdown from "react-countdown";
 const notif = [
   {
     title: "Quiz is Yet to Begin !!",
@@ -31,7 +31,7 @@ const notif = [
 function Quiz({ email }) {
   const [ques, setQuestions] = useState([]);
   const [ans, setAnswers] = useState({});
-
+  const [timer, setTimer] = useState(10000);
   const [code, setCode] = useState(-1);
 
   useEffect(
@@ -57,6 +57,7 @@ function Quiz({ email }) {
             let sortedD = Object.entries(data.question).sort(function (a, b) {
               return Math.random() - 0.5;
             });
+            setTimer(data.metadata.timer);
             setQuestions(sortedD);
             setCount4(sortedD.length);
             setCount3(sortedD.length - 1);
@@ -195,6 +196,11 @@ function Quiz({ email }) {
       {code === -1 && ques.length > 0 && Object.keys(ans).length > 0 ? (
         <>
           {" "}
+          <Countdown
+            date={Date.now() + timer}
+            precision={3}
+            onComplete={saveResponse}
+          />
           <div className="question-box">
             <div className="questionchange">
               <h1>Question. {currentQuestion + 1}</h1>

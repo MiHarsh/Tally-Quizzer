@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Form, InputGroup } from "react-bootstrap";
 import "./CreateQuiz.css";
 import DateTime from "./DateTime/DateTime";
+import Timer from "./DateTime/Timer";
 import AddQuesModal from "./AddQuesModal";
 import QuestionDetails from "./CreateQuiz/QuestionDetails";
 import { useAuth } from "../contexts/AuthContext";
@@ -15,6 +16,7 @@ export default function CreateQuiz() {
     QuizName: "",
     endTime: Date.now(),
     startTime: Date.now(),
+    timer: 0,
   });
 
   useEffect(() => {
@@ -93,6 +95,14 @@ export default function CreateQuiz() {
             name="endTime"
             setMetaData={setMetaData}
             val={metaData.endTime}
+          />
+          <br />
+          <p>Timer </p>
+          <Timer
+            name="timer"
+            setMetaData={setMetaData}
+            // onChange={console.log(metaData.timer)}
+            val={metaData.timer}
           />
           <br />
           <div className="row ml-1 d-flex justify-content-center ">
